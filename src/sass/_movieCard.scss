@@ -1,0 +1,29 @@
+.card {
+
+    margin-bottom: 3rem;
+    border: none;
+    cursor: pointer;
+
+    &:not(:last-child) {
+        margin-right: 3rem;
+    }
+
+    &-body {
+        padding: 0;
+    }
+
+    &-title {
+        margin: .3rem;
+        margin-left: 0;
+
+        & span {
+            font-size: 1.6rem;
+            font-weight: 300;
+        }
+    }
+
+    &-text {
+        font-size: 1.25rem;
+        font-weight: 300;
+    }
+}

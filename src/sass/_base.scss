@@ -1,0 +1,44 @@
+$primary-light: #3498db;
+$primary-dark: #2980b9;
+
+$light-1: #ecf0f1;
+$light-2: #d4d7d8;
+
+$dark-1: #414650;
+$dark-2: #2f3640;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%; //1rem = 10px, 10px / 16px = 62.5%
+}
+
+body {
+    font-size: 1.8rem;
+    font-family: "Nunito", sans-serif;
+    font-weight: 400;
+    color: #ecf0f1;
+    height: 100vh;
+    overflow: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: $dark-1;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+    background: $primary-light;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: $primary-dark;
+}

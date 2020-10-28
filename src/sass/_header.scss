@@ -1,0 +1,93 @@
+@import './base';
+
+.header {
+
+    // justify-content: space-between;
+    align-items: center;
+
+    &__logo {
+        text-shadow: 0px .1rem .25rem rgba($color: #000000, $alpha: 1.0);
+        margin: 0;
+        padding: 0;
+
+        &-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background-color: $primary-dark;
+            min-width: 25rem;
+            color: $light-1;
+            cursor: pointer;
+            transition: .2s;
+            
+    
+            &:hover {
+                background-color: #1d6391;
+    
+                & .header__logo {
+                    text-shadow: 0px .1rem .5rem rgba($color: #000000, $alpha: 1.0)
+                }
+            }
+            &:active .header__logo {
+                text-shadow: 0px .025rem .25rem rgba($color: #000000, $alpha: 1.0);
+                transition: .1s;
+                transform: translateY(.05rem);
+            }
+        }
+
+    }
+}
+
+.user {
+    font-size: 2.4rem;
+}
+
+
+.search {
+    height: 70%;
+    width: 45rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 4.5rem;
+
+    &__icon {
+        position: relative;
+        cursor: pointer;
+        color: $light-2;
+        left: -3rem;
+    }
+
+    &__input {
+        width: 100%;
+        height: 100%;
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: 200;
+        color: $light-1;
+        background-color: $primary-light;
+        border: none;
+        padding: 1.5rem;
+        transition: all .25s;
+
+        &:focus {
+            outline: none;
+            width: 100%;
+            background-color: $primary-dark;
+        }
+
+        &::-webkit-input-placeholder,
+        &:focus::-webkit-input-placeholder {
+            color: $light-2;
+        }
+    }
+}
+
+.user {
+    margin-left: auto;
+    padding-right: 3rem;
+    color: $light-2
+}

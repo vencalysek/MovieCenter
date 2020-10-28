@@ -1,0 +1,31 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.header {
+    // height: 10vh;
+    height: 6rem;
+    background-color: $primary-light;
+    display: flex;
+}
+
+.content {
+    display: flex;
+    flex: 1;
+}
+
+.sidebar {
+    background-color: $dark-2;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    // height: 90vh;
+}
+
+.main-section {
+    background-color: $dark-1;
+    flex: 1;
+}
