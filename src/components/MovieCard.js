@@ -1,17 +1,28 @@
 import React from "react";
-import poster from '../img/poster.jpg'
+import poster from "../img/poster.jpg";
 
-const MovieCard = () => {
-    return (
+const MovieCard = ({item}) => {
+    return (        
         <div className="col-md-6 col-lg-4 col-xl-2">
-            <div className="card bg-transparent">
-                <img src={poster} alt="" className="card-img-top" />
-                <div className="card-body">
-                    <h3 className="card-title">Warcraft <span>(2016)</span> </h3>
-                    <p className="card-text">
-                        Action / Adventure
-
-                    </p>
+            <div className="flip-card">
+                <div className="card bg-transparent">
+                    <div className="card-front">
+                        <img
+                            className="card-img-top"
+                            src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                            alt=""
+                        />
+                        <h3 className="card-title">{item.title}<span>({item.release_date.split('-').slice(0,1)})</span> </h3>
+                    </div>
+                    <div className="card-back">
+                        
+                        <img
+                            className="card-img-top"
+                            src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                            alt=""
+                        />
+                        <button className="card-btn">See Details</button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,29 +1,78 @@
-.card {
+.flip-card {
+    width: 100%;
+    height: 100%;
+    perspective: 1000px;
+    margin-bottom: 1.5rem;
 
-    margin-bottom: 3rem;
+    &:hover .card {
+        transform: rotateY(180deg);
+    }
+}
+.card {
     border: none;
     cursor: pointer;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+
+    &-btn {
+        background-color: transparent;
+        color: $light-1;
+        cursor: pointer;
+        padding: 1rem 2rem;
+        outline: none !important;
+        border: .25rem solid $light-1;
+        border-radius: 50px;
+        // display: inline-block;
+        transition-duration: 0.2s;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        
+        &:hover {
+            background-color: $light-1;
+            color: $dark-1;
+            border: .25rem solid $light-1;
+        }
+        &:active {
+            background-color: $light-2;
+            border: .25rem solid $light-2;
+            color: $dark-2;
+        }
+    }
+
+    &-front,
+    &-back {
+        backface-visibility: hidden;
+    }
+
+    &-back {
+        width: 100%;
+        height: 100%;
+        margin-bottom: -2.1rem;
+        position: absolute;
+        transform: rotateY(180deg);
+
+        & img {
+            transform: scaleX(-1);
+            filter: brightness(20%);
+        }
+    }
 
     &:not(:last-child) {
         margin-right: 3rem;
     }
 
-    &-body {
-        padding: 0;
-    }
-
     &-title {
-        margin: .3rem;
+        display: flex;
+        justify-content: space-between;
+
+        margin: 0.3rem;
         margin-left: 0;
 
         & span {
             font-size: 1.6rem;
             font-weight: 300;
         }
-    }
-
-    &-text {
-        font-size: 1.25rem;
-        font-weight: 300;
     }
 }
