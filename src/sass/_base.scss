@@ -28,11 +28,11 @@ body {
 }
 
 ::-webkit-scrollbar {
-    width: 10px;
+    width: .75rem;
 }
 
 ::-webkit-scrollbar-track-piece {
-    background-color: $dark-1;
+    background-color: inherit;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -42,4 +42,8 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: $primary-dark;
+}
+
+.row {
+    margin: 0 !important;
 }

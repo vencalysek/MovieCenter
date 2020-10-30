@@ -41,12 +41,12 @@
         }
     }
 
-    &-front,
-    &-back {
+    &__front,
+    &__back {
         backface-visibility: hidden;
     }
 
-    &-back {
+    &__back {
         width: 100%;
         height: 100%;
         margin-bottom: -2.1rem;

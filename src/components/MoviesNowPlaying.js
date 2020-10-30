@@ -3,7 +3,7 @@ import axios from "axios";
 import { API_URL, API_KEY, TOP_RATED, POPULAR, NOW_PLAYING } from "../ApiConfig";
 import MovieCard from "./MovieCard";
 
-const PopularMovies = () => {
+const MoviesNowPlaying = () => {
     // useState Hook. items -> itemy ktere pretahneme z API, setItems -> funkce ktera     manipuluje state
 
     const [items, setItems] = useState([]);
@@ -31,7 +31,7 @@ const PopularMovies = () => {
         // nez se nactou data je pusteny spiner
         <p>Loading...</p>
     ) : (
-        <div className="movies__popular">
+        <div className="movies__now-playing">
             <div className="main-section__heading">Now Playing</div>
             <div className="container-fliud main-section__wrap">
                 <div className="row">
@@ -45,4 +45,4 @@ const PopularMovies = () => {
     );
 };
 
-export default PopularMovies;
+export default MoviesNowPlaying;

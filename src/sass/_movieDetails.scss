@@ -1,0 +1,59 @@
+.movie-details {
+    height: 100%;
+    background-color: $light-2;
+
+    &__hero {
+        min-height: 40rem;
+        height: 70vh;
+    }
+
+    &--wrap {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        padding: 3rem 4rem;
+    }
+
+    &__poster {
+        &--wrap {
+            border-radius: .5rem;
+            height: 100%;
+            overflow: hidden;
+            & img {
+                height: 100%;
+            }
+        }
+    }
+
+    &__info {
+        position: relative;
+
+        &--wrap {
+            flex: 1;
+            padding-left: 4rem;
+            display: flex;
+            align-items: center;
+        }
+        &--content {
+            height: 100%;
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+    }
+}
+
+.info--content__heading-facts {
+    display: flex;
+    flex-wrap: wrap;
+
+    & span {
+        margin-right: 1.5rem;
+    }
+
+    &-genres {
+        display: flex;
+    }
+
+}

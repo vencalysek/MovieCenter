@@ -6,7 +6,7 @@ const MovieCard = ({item}) => {
         <div className="col-md-6 col-lg-4 col-xl-2">
             <div className="flip-card">
                 <div className="card bg-transparent">
-                    <div className="card-front">
+                    <div className="card__front">
                         <img
                             className="card-img-top"
                             src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
@@ -14,7 +14,7 @@ const MovieCard = ({item}) => {
                         />
                         <h3 className="card-title">{item.title}<span>({item.release_date.split('-').slice(0,1)})</span> </h3>
                     </div>
-                    <div className="card-back">
+                    <div className="card__back">
                         
                         <img
                             className="card-img-top"

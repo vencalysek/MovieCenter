@@ -6,7 +6,7 @@
 
 .header {
     // height: 10vh;
-    height: 6rem;
+    height: 7rem;
     background-color: $primary-light;
     display: flex;
 }
@@ -14,6 +14,7 @@
 .content {
     display: flex;
     flex: 1;
+    height: calc(100vh - 7rem);
 }
 
 .sidebar {
