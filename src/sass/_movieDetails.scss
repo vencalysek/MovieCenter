@@ -5,6 +5,19 @@
     &__hero {
         min-height: 40rem;
         height: 70vh;
+
+        &--img {
+            height: 100%;
+            background-size: cover;
+            background-position: right -20rem top;
+            background-repeat: no-repeat;
+        }
+
+        &--overlay {
+            width: 100%;
+            height: 100%;
+            padding: 0 7.5rem;
+        }
     }
 
     &--wrap {
@@ -16,7 +29,7 @@
 
     &__poster {
         &--wrap {
-            border-radius: .5rem;
+            border-radius: 0.5rem;
             height: 100%;
             overflow: hidden;
             & img {
@@ -55,5 +68,4 @@
     &-genres {
         display: flex;
     }
-
 }

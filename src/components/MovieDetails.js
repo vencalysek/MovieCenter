@@ -6,11 +6,7 @@ const MovieDetails = () => {
 
     // image styling
     const styleHeroImage = {
-        height: '100%',
         backgroundImage: `url(${heroImg})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'right -20rem top',
-        backgroundRepeat: 'no-repeat',
     }
 
     // colorst for imge overlay
@@ -29,10 +25,7 @@ const MovieDetails = () => {
     const colorRand = Math.floor(Math.random() * colors.length);
 
     const styleHeroOverlay = {
-        width: "100%",
-        height: "100%",
-        backgroundImage: `linear-gradient(to right, ${colors[colorRand][0]} 150px,${colors[colorRand][1]} 110%`,
-        padding: '0 7.5rem'
+        backgroundImage: `linear-gradient(to right, ${colors[colorRand][0]} 150px,${colors[colorRand][1]} 110%`
     };
 
 
