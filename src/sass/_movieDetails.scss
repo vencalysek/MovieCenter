@@ -1,6 +1,7 @@
 .movie-details {
     height: 100%;
     background-color: $light-2;
+    position: relative;
 
     &__hero {
         min-height: 40rem;
@@ -53,6 +54,46 @@
             flex-wrap: nowrap;
             flex-direction: column;
             justify-content: space-evenly;
+        }
+    }
+
+    &__back-link {
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+        transition: .3s;
+
+        &:hover i {
+            transform: scaleY(.7) scaleX(1.5);
+            
+        }
+
+        & a {
+            color: $light-1;
+            opacity: .7;
+
+            &:hover {
+                opacity: 1;
+            }
+
+            &:link,
+            &:visited {
+                color: $light-1;
+            }
+            &:active {
+                transform: translateY(20px);
+            }
+        }
+
+        & i {
+            font-size: 5rem;
+            transform: rotateX(0deg) scaleY(.7) scaleX(1);
+            transition: .1s;
+            &:active {
+                transition: .1s;
+                transform: scaleY(.7) scaleX(1.5);
+                color: $light-2;
+            }
         }
     }
 }
