@@ -1,11 +1,11 @@
 import React from "react";
 import MovieDetails from "./MovieDetails";
 // import MovieCard from './MovieCard';
-import MoviesNowPlaying from "./MoviesNowPlaying";
-import MoviesPopular from "./MoviesPopular";
-import MoviesUpcoming from "./MoviesUpcoming";
-import MoviesTopRated from "./MoviesTopRated";
-import Home from "./Home";
+import MoviesNowPlaying from "../pages/MoviesNowPlaying";
+import MoviesPopular from "../pages/MoviesPopular";
+import MoviesUpcoming from "../pages/MoviesUpcoming";
+import MoviesTopRated from "../pages/MoviesTopRated";
+import Home from '../pages/Home'
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -24,10 +24,9 @@ const MainSection = () => {
                         <Route path="/popular" component={MoviesPopular} />
                         <Route path="/top-rated" component={MoviesTopRated} />
                         <Route path="/upcoming" component={MoviesUpcoming} />
+                        <Route path="/movie" component={MovieDetails} />
                     </Switch>
 
-                {/* <MoviesNowPlaying /> */}
-                {/* <MoviesPopular /> */}
             </div>
         </div>
     );

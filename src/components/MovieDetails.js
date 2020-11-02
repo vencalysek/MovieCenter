@@ -98,8 +98,10 @@ const MovieDetails = () => {
                     </div>
                 </div>
             </div>
-            <div className="movie-details__back-link">
-                <a href="#">
+
+            {/* back button */}
+            <div className="movie-details__back-wrap">
+                <a href="#" className="movie-details__back-btn">
                     <i className="material-icons">arrow_back</i>
                 </a>
             </div>

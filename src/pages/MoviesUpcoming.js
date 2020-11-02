@@ -2,8 +2,8 @@ import React from 'react'
 
 const MoviesUpcoming = () => {
     return (
-        <div>
-            Upcoming Movies
+        <div className="main-section__heading">
+            Upcoming
         </div>
     )
 }

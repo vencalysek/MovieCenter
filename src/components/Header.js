@@ -4,7 +4,9 @@ const Header = () => {
     return (
         <header className="header">
             <div className="header__logo-wrapper">
-                <p className="header__logo">MovieCenter</p>
+                <p className="header__logo">
+                    <a href="/">MovieCenter</a>
+                </p>
             </div>
 
             <form action="#" className="search">

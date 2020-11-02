@@ -2,8 +2,8 @@ import React from 'react'
 
 const MoviesTopRated = () => {
     return (
-        <div>
-            Top Rated Movies
+        <div className="main-section__heading">
+            Top Rated
         </div>
     )
 }

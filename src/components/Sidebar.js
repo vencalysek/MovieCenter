@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import Footer from "./Footer";
 
 const Sidebar = () => {
     return (
@@ -61,6 +62,7 @@ const Sidebar = () => {
                     </NavLink>
                 </li>
             </ul>
+            <Footer />
         </div>
     );
 };

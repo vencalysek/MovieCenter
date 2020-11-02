@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { API_URL, API_KEY, TOP_RATED, POPULAR, NOW_PLAYING } from "../ApiConfig";
-import MovieCard from "./MovieCard";
+import MovieCard from "../components/MovieCard";
 
 const PopularMovies = () => {
     // useState Hook. items -> itemy ktere pretahneme z API, setItems -> funkce ktera     manipuluje state
@@ -18,7 +18,7 @@ const PopularMovies = () => {
             console.log(result.data.results);
 
             //todo: vlozit data pomoci setItems do state
-            setItems(result.data.results.slice(0,11));
+            setItems(result.data.results);
             //todo: az se nactou data loading se zmeni na false
             setIsLoading(false);
         };
