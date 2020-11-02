@@ -4,15 +4,14 @@
     margin-top: 2rem;
 
     &__icon {
-        margin-right: .75rem;
+        margin-right: 0.75rem;
     }
 
     &__item {
         position: relative;
-        /* height: 50px; */
 
         &:not(:last-child) {
-            margin-bottom: .5rem;
+            margin-bottom: 0.5rem;
         }
 
         &::before {
@@ -21,38 +20,21 @@
             top: 0;
             left: 0;
             height: 100%;
-            width: .3rem;
+            width: 0.3rem;
             background-color: $dark-1;
             transform: scaleY(0);
-            transition: transform .2s,
-                width .4s cubic-bezier(1, 0, 0, 1) 0.2s,
-                background-color .1s;
+            transition: transform 0.2s, width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s,
+                background-color 0.1s;
         }
 
-        &:hover::before,
-        &--active::before {
+        &:hover::before {
             transform: scaleY(1);
             width: 100%;
-            
         }
 
-        &--active .side-nav__text,
-        &--active .side-nav__icon {
-            color: $primary-light;
-        }
-        
-        &:active::before,
-        &--active:active::before {
+        &:active::before {
             background-color: $primary-light;
         }
-
-        &--active:active .side-nav__text,
-        &--active:active .side-nav__icon {
-            color: $light-1;
-            
-        }
-
-
     } // nav__item
 
     &__link:link,
@@ -63,8 +45,15 @@
         display: flex;
         align-items: center;
         position: relative;
-        z-index: 2;
     }
 
+    &__link--active {
+        background-color: $dark-1;
+        color: $primary-light !important;
 
+        &:active {
+            background-color: $primary-light;
+            color: $light-1 !important;
+        }
+    }
 } // side-nav
