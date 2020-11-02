@@ -4,27 +4,14 @@
     margin-top: 2rem;
 
     &__icon {
-        margin-right: .75rem;
+        margin-right: 0.75rem;
     }
 
     &__item {
         position: relative;
-        /* height: 50px; */
 
         &:not(:last-child) {
-            margin-bottom: .5rem;
-        }
-
-        &--active {
-            background-color: $dark-1;
-            &:active {
-                background-color: $primary-light;
-            }
-
-            & .side-nav__title,
-            & .side-nav__icon {
-                color: $primary-light;
-            }
+            margin-bottom: 0.5rem;
         }
 
         &::before {
@@ -33,34 +20,22 @@
             top: 0;
             left: 0;
             height: 100%;
-            width: .3rem;
+            width: 0.3rem;
             background-color: $dark-1;
             transform: scaleY(0);
-            transition: transform .2s,
-                width .4s cubic-bezier(1, 0, 0, 1) 0.2s,
-                background-color .1s;
+            transition: transform 0.2s, width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s,
+                background-color 0.1s;
         }
 
         &:hover::before {
             transform: scaleY(1);
             width: 100%;
-            
         }
 
-        &:active::before,
-        &--active:active::before {
+        &:active::before {
             background-color: $primary-light;
         }
-
-        &--active:active .side-nav__title,
-        &--active:active .side-nav__icon {
-            color: $light-1;
-            
-        }
-
-
     } // nav__item
-
 
     &__link--active {
         background-color: $dark-1;
@@ -72,10 +47,6 @@
         }
     }
 
-
-
-
-
     &__link:link,
     &__link:visited {
         padding: 1.25rem 2rem;
@@ -86,6 +57,4 @@
         position: relative;
         z-index: 2;
     }
-
-
 } // side-nav

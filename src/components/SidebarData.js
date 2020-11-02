@@ -23,7 +23,7 @@ export const SidebarData = [
         icon: <i className="material-icons side-nav__icon">star</i>
     },
     {
-        title: 'Uprocming',
+        title: 'Upcoming',
         path: '/upcoming',
         icon: <i className="material-icons side-nav__icon">fast_forward</i>
     },
