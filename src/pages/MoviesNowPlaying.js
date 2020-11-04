@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { API_URL, API_KEY, TOP_RATED, POPULAR, NOW_PLAYING } from "../ApiConfig";
+import { NOW_PLAYING } from "../ApiConfig";
 import MovieCard from "../components/MovieCard";
 
 const MoviesNowPlaying = () => {
@@ -9,21 +9,20 @@ const MoviesNowPlaying = () => {
     const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    let type = NOW_PLAYING;
 
     // call na API
-    const fetchItems = async (type) => {
-        const result = await axios(`${API_URL}${type}?api_key=${API_KEY}`);
+    const fetchItems = async () => {
+        const result = await axios(NOW_PLAYING);
         console.log(result.data.results);
 
         //todo: vlozit data pomoci setItems do state
-        setItems(result.data.results.slice(0,1));
+        setItems(result.data.results.slice());
         //todo: az se nactou data loading se zmeni na false
         setIsLoading(false);
     };
 
     useEffect(() => {
-        fetchItems(type);
+        fetchItems();
     }, []);
 
     return isLoading ? (

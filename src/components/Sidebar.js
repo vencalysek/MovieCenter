@@ -19,7 +19,7 @@ const Sidebar = () => {
                 </li>
                 <li className="side-nav__item">
                     <NavLink
-                        to="/now-playing"
+                        to="/now_playing"
                         className="side-nav__link"
                         activeClassName="side-nav__link--active"
                     >
@@ -41,7 +41,7 @@ const Sidebar = () => {
                 </li>
                 <li className="side-nav__item">
                     <NavLink
-                        to="/top-rated"
+                        to="/top_rated"
                         className="side-nav__link"
                         activeClassName="side-nav__link--active"
                     >
@@ -56,7 +56,7 @@ const Sidebar = () => {
                         activeClassName="side-nav__link--active"
                     >
                         <i className="material-icons side-nav__icon">
-                            fast_forward
+                            fiber_new
                         </i>
                         <span className="side-nav__text">Upcoming</span>
                     </NavLink>

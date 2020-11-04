@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import poster from "../img/poster.jpg";
 
 const clg = (id) => {
-    console.log(id)
+    // console.log(id)
 }
 
 const MovieCard = ({item}) => {
@@ -17,7 +16,7 @@ const MovieCard = ({item}) => {
                             src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                             alt=""
                         />
-                        {/* <h3 className="card-title">{item.title}<span>({item.release_date.split('-').slice(0,1)})</span> </h3> */}
+
                     </div>
                     <div className="card__back">
                         

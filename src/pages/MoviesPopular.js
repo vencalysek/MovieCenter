@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { API_URL, API_KEY, TOP_RATED, POPULAR, NOW_PLAYING } from "../ApiConfig";
+import { POPULAR } from "../ApiConfig";
 import MovieCard from "../components/MovieCard";
 
 const PopularMovies = () => {
@@ -10,11 +10,9 @@ const PopularMovies = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [query, setQuery] = useState("");
 
-    let type = POPULAR;
-
     useEffect(() => {
-        const fetchItems = async (type) => {
-            const result = await axios(`${API_URL}${type}?api_key=${API_KEY}`);
+        const fetchItems = async () => {
+            const result = await axios(POPULAR);
             console.log(result.data.results);
 
             //todo: vlozit data pomoci setItems do state
@@ -23,7 +21,7 @@ const PopularMovies = () => {
             setIsLoading(false);
         };
 
-        fetchItems(type);
+        fetchItems();
         // [query] je dependency, pokazde co se zmeni, se odpali funkce useFetch
     }, [query]);
 

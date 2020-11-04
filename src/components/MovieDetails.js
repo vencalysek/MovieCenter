@@ -1,12 +1,68 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+// api
+import axios from "axios";
+import { API_KEY, API_URL } from "../ApiConfig";
+
+// router
+import { Link, useParams } from "react-router-dom";
+
 import heroImg from "../img/movie_hero.jpg";
 import posterImg from "../img/poster.jpg";
+import spinner from "../img/spinner.jpg";
 
-const MovieDetails = ({ movieId }) => {
+const MovieDetails = () => {
+    // ! API CALL
+
+    const [item, setItem] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const { movieId } = useParams();
+    const [favourite, setFavourite] = useState(false);
+
+    const fetchItem = async () => {
+        const result = await axios(
+            `${API_URL}/movie/${movieId}?api_key=${API_KEY}`
+        );
+        console.log(result.data);
+
+        //todo: vlozit data pomoci setItem do state
+        setItem(result.data);
+        //todo: az se nactou data loading se zmeni na false
+        setIsLoading(false);
+    };
+
+    useEffect(() => {
+        fetchItem();
+    }, []);
+
+    function date(release) {
+        return release.split("-").join("/");
+    }
+
+    function time_convert(num) {
+        let hours = Math.floor(num / 60);
+        let minutes = num % 60;
+        return hours + "h " + minutes + "m";
+    }
+
+    function getGenre() {
+
+        let showGenres = []
+        for (let i = 0; i < item.genres.length; i++) {
+            showGenres.push(item.genres[i].name)
+        }
+        return showGenres.join(', ')
+    }
+
+    // zatim nefunguje jak ma, nezustane ulozeny state a refreshuje stranku
+    function movieFavourite (e) {
+        e.preventDefault()
+        setFavourite(!favourite)
+    }
+
+    // ! STYLING
     // image styling
     const styleHeroImage = {
-        backgroundImage: `url(${heroImg})`,
+        backgroundImage: `url(https://image.tmdb.org/t/p/w500${item.backdrop_path})`,
     };
 
     // colorst for imge overlay
@@ -28,7 +84,10 @@ const MovieDetails = ({ movieId }) => {
         backgroundImage: `linear-gradient(to right, ${colors[colorRand][0]} 150px,${colors[colorRand][1]} 110%`,
     };
 
-    return (
+    return isLoading ? (
+        // nez se nactou data je pusteny spiner
+        <img src={spinner} alt="loading" className="spinner" />
+    ) : (
         <div className="movie-details">
             <div className="movie-details__hero">
                 <div
@@ -42,7 +101,21 @@ const MovieDetails = ({ movieId }) => {
                         <div className="movie-details--wrap">
                             {/* poster */}
                             <div className="movie-details__poster--wrap">
-                                <img src={posterImg} alt="" />
+                                <div>
+                                    {favourite ? (
+                                        <i onClick={movieFavourite} className="material-icons star star-active">
+                                            star
+                                        </i>
+                                    ) : (
+                                        <i onClick={movieFavourite} className="material-icons star star-inactive">
+                                            star_border
+                                        </i>
+                                    )}
+                                </div>
+                                <img
+                                    src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                                    alt=""
+                                />
                             </div>
                             {/* info */}
                             <div className="movie-details__info--wrap">
@@ -50,34 +123,43 @@ const MovieDetails = ({ movieId }) => {
                                     {/* heading */}
                                     <div className="info--content__heading">
                                         <h1 className="info--content__heading-title">
-                                            Warcraft id: {movieId}{" "}
-                                            <span>(2016)</span>
+                                            {item.title}
                                         </h1>
                                         <div className="info--content__heading-facts">
-                                            <span className="certification">
-                                                R
+
+                                            <span className="info--content__heading-facts-genres">
+                                                {getGenre()}
                                             </span>
+                                            <i className="material-icons bullet">fiber_manual_record</i>
                                             <span className="release">
-                                                10/10/2020
+                                                {date(item.release_date)}
                                             </span>
 
-                                            {/* TADY BUDE TREBA UDELAT MAP NA ZANR FILMU */}
-                                            <span className="info--content__heading-facts-genres">
-                                                <p>Action</p>
-                                                <p>Fantasy</p>
-                                            </span>
+                                            <i className="material-icons bullet">fiber_manual_record</i>
                                             <span className="run-time">
-                                                1h 55m
+                                                {time_convert(
+                                                    parseInt(item.runtime)
+                                                )}
                                             </span>
                                         </div>
+                                    <div className="info--content__score-wrap">
+                                        <h2>{item.vote_average}/10</h2>
+                                    </div>
                                     </div>
 
-                                    {/* score */}
                                     {/* overview */}
-                                    <div className="info--content__overview">
-                                        <h1 className="info--content__overview-title">Overview</h1>
-                                        <p className="info--content__overview-content">The peaceful realm of Azeroth standson the brink of war as itscivilization faces a fearsome raceof invaders: orc warriors fleeingtheir dying home to colonizeanother. As a portal opens to connect the two worlds, one army faces destruction and the other faces extinction. From opposing sides, two heroes are set on a collision course that will decide the fate of their family, their people, and their home.
-                                        </p>
+                                    <div>
+                                        <h3 className="info--content__tagline">
+                                            {item.tagline}
+                                        </h3>
+                                        <div className="info--content__overview">
+                                            <h2 className="info--content__overview-title">
+                                                Overview
+                                            </h2>
+                                            <p className="info--content__overview-content">
+                                                {item.overview}
+                                            </p>
+                                        </div>
                                     </div>
                                 </section>
                             </div>

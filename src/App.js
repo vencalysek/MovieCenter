@@ -23,11 +23,15 @@ export default App;
 
 // TODO
 /********
- * upravit Movies elementy - vytvorit jeden component pro API call
  *
- * routing
- * movie details - MoviCard item
- * search api
- *
- *
+ * // todo: routing - done
+ * // todo: movie details - main logic done
+ * 
+ * todo: homepage
+ * todo: movie details back button
+ * todo: search api
+ * todo: save favourit
+ * 
+ * todo: improving movie details with actors, pic and vids
+ * todo: will see
  */
