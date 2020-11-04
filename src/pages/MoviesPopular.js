@@ -31,7 +31,7 @@ const PopularMovies = () => {
         // nez se nactou data je pusteny spiner
         <p>Loading...</p>
     ) : (
-        <div className="movies__popular">
+        <div className="movie-section movies__popular">
             <div className="main-section__heading">Popular</div>
             <div className="container-fliud main-section__wrap">
                 <div className="row">

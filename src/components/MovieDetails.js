@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import heroImg from "../img/movie_hero.jpg";
 import posterImg from "../img/poster.jpg";
 
-const MovieDetails = () => {
+const MovieDetails = ({ movieId }) => {
     // image styling
     const styleHeroImage = {
         backgroundImage: `url(${heroImg})`,
@@ -49,7 +50,8 @@ const MovieDetails = () => {
                                     {/* heading */}
                                     <div className="info--content__heading">
                                         <h1 className="info--content__heading-title">
-                                            Warcraft <span>(2016)</span>
+                                            Warcraft id: {movieId}{" "}
+                                            <span>(2016)</span>
                                         </h1>
                                         <div className="info--content__heading-facts">
                                             <span className="certification">
@@ -73,23 +75,8 @@ const MovieDetails = () => {
                                     {/* score */}
                                     {/* overview */}
                                     <div className="info--content__overview">
-                                        <h1 className="info--content__overview-title">
-                                            Overview
-                                        </h1>
-                                        <p className="info--content__overview-content">
-                                            The peaceful realm of Azeroth stands
-                                            on the brink of war as its
-                                            civilization faces a fearsome race
-                                            of invaders: orc warriors fleeing
-                                            their dying home to colonize
-                                            another. As a portal opens to
-                                            connect the two worlds, one army
-                                            faces destruction and the other
-                                            faces extinction. From opposing
-                                            sides, two heroes are set on a
-                                            collision course that will decide
-                                            the fate of their family, their
-                                            people, and their home.
+                                        <h1 className="info--content__overview-title">Overview</h1>
+                                        <p className="info--content__overview-content">The peaceful realm of Azeroth standson the brink of war as itscivilization faces a fearsome raceof invaders: orc warriors fleeingtheir dying home to colonizeanother. As a portal opens to connect the two worlds, one army faces destruction and the other faces extinction. From opposing sides, two heroes are set on a collision course that will decide the fate of their family, their people, and their home.
                                         </p>
                                     </div>
                                 </section>
@@ -100,11 +87,11 @@ const MovieDetails = () => {
             </div>
 
             {/* back button */}
-            <div className="movie-details__back-wrap">
-                <a href="#" className="movie-details__back-btn">
+            <Link to="/" className="movie-details__back-btn">
+                <div className="movie-details__back-wrap">
                     <i className="material-icons">arrow_back</i>
-                </a>
-            </div>
+                </div>
+            </Link>
         </div>
     );
 };
