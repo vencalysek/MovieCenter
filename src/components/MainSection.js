@@ -1,6 +1,5 @@
 import React from "react";
 import MovieDetails from "./MovieDetails";
-// import MovieCard from './MovieCard';
 import MoviesNowPlaying from "../pages/MoviesNowPlaying";
 import MoviesPopular from "../pages/MoviesPopular";
 import MoviesUpcoming from "../pages/MoviesUpcoming";
@@ -13,6 +12,7 @@ const MainSection = () => {
 
     return (
         <div className="main-section">
+            
             <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/now_playing" exact component={MoviesNowPlaying} />

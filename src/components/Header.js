@@ -9,14 +9,14 @@ const Header = () => {
                 </p>
             </div>
 
-            <form action="#" className="search">
+            {/* <form action="#" className="search">
                 <input
                     type="text"
                     className="search__input"
                     placeholder="Search movies..."
                 />
                 <i className="material-icons search__icon">search</i>
-            </form>
+            </form> */}
             <div className="user">User</div>
         </header>
     );

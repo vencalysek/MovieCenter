@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { NOW_PLAYING } from "../ApiConfig";
 import MovieCard from "../components/MovieCard";
+import spinner from "../img/spinner.jpg";
 
 const MoviesNowPlaying = () => {
     // useState Hook. items -> itemy ktere pretahneme z API, setItems -> funkce ktera     manipuluje state
@@ -13,10 +14,9 @@ const MoviesNowPlaying = () => {
     // call na API
     const fetchItems = async () => {
         const result = await axios(NOW_PLAYING);
-        console.log(result.data.results);
 
         //todo: vlozit data pomoci setItems do state
-        setItems(result.data.results.slice());
+        setItems(result.data.results);
         //todo: az se nactou data loading se zmeni na false
         setIsLoading(false);
     };
@@ -26,8 +26,7 @@ const MoviesNowPlaying = () => {
     }, []);
 
     return isLoading ? (
-        // nez se nactou data je pusteny spiner
-        <p>Loading...</p>
+        <img src={spinner} alt="loading" className="spinner" />
     ) : (
         <div className="movie-section now-playing">
             <div className="main-section__heading">Now Playing</div>

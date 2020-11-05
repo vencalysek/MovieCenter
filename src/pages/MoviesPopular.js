@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { POPULAR } from "../ApiConfig";
 import MovieCard from "../components/MovieCard";
+import spinner from "../img/spinner.jpg";
 
 const PopularMovies = () => {
     // useState Hook. items -> itemy ktere pretahneme z API, setItems -> funkce ktera     manipuluje state
@@ -26,8 +27,7 @@ const PopularMovies = () => {
     }, [query]);
 
     return isLoading ? (
-        // nez se nactou data je pusteny spiner
-        <p>Loading...</p>
+        <img src={spinner} alt="loading" className="spinner" />
     ) : (
         <div className="movie-section movies__popular">
             <div className="main-section__heading">Popular</div>

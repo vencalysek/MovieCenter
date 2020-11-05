@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import imageNotLoad from '../img/img_404.jpg'
 
 const clg = (id) => {
     // console.log(id)
@@ -13,7 +14,7 @@ const MovieCard = ({item}) => {
                     <div className="card__front">
                         <img
                             className="card-img-top"
-                            src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                            src={item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : imageNotLoad}
                             alt=""
                         />
 
@@ -22,7 +23,7 @@ const MovieCard = ({item}) => {
                         
                         <img
                             className="card-img-top"
-                            src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                            src={item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : imageNotLoad}
                             alt=""
                         />
                         <Link to={`/movie/${item.id}`}>

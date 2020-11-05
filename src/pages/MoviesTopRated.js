@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { TOP_RATED } from "../ApiConfig";
 import MovieCard from "../components/MovieCard";
+import spinner from "../img/spinner.jpg";
 
 const MoviesTopRated = () => {
     // useState Hook. items -> itemy ktere pretahneme z API, setItems -> funkce ktera     manipuluje state
@@ -26,8 +27,7 @@ const MoviesTopRated = () => {
     }, []);
 
     return isLoading ? (
-        // nez se nactou data je pusteny spiner
-        <p>Loading...</p>
+        <img src={spinner} alt="loading" className="spinner" />
     ) : (
         <div className="movie-section now-playing">
             <div className="main-section__heading">Top Rated</div>

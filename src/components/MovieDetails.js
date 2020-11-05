@@ -6,8 +6,6 @@ import { API_KEY, API_URL } from "../ApiConfig";
 // router
 import { Link, useParams } from "react-router-dom";
 
-import heroImg from "../img/movie_hero.jpg";
-import posterImg from "../img/poster.jpg";
 import spinner from "../img/spinner.jpg";
 
 const MovieDetails = () => {

@@ -49,52 +49,6 @@
 
 .user {
     font-size: 2.4rem;
-}
-
-
-.search {
-    height: 70%;
-    width: 45rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 4.5rem;
-
-    &__icon {
-        position: relative;
-        cursor: pointer;
-        color: $light-2;
-        left: -3rem;
-    }
-
-    &__input {
-        width: 100%;
-        height: 100%;
-        font-family: inherit;
-        font-size: inherit;
-        font-weight: 200;
-        color: $light-1;
-        background-color: $primary-light;
-        border: none;
-        padding: 1.5rem;
-        transition: all .25s;
-        
-
-        &:focus {
-            outline: none;
-            width: 100%;
-            background-color: $primary-dark;
-            border-bottom: solid 1px rgba($light-2, .75);
-        }
-
-        &::-webkit-input-placeholder,
-        &:focus::-webkit-input-placeholder {
-            color: $light-2;
-        }
-    }
-}
-
-.user {
     margin-left: auto;
     padding-right: 3rem;
     color: $light-2
