@@ -4,7 +4,8 @@ import axios from "axios";
 import { API_KEY, API_URL } from "../ApiConfig";
 
 // router
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import spinner from "../img/spinner.jpg";
 
@@ -15,6 +16,7 @@ const MovieDetails = () => {
     const [isLoading, setIsLoading] = useState(true);
     const { movieId } = useParams();
     const [favourite, setFavourite] = useState(false);
+    let history = useHistory();
 
     const fetchItem = async () => {
         const result = await axios(
@@ -43,18 +45,17 @@ const MovieDetails = () => {
     }
 
     function getGenre() {
-
-        let showGenres = []
+        let showGenres = [];
         for (let i = 0; i < item.genres.length; i++) {
-            showGenres.push(item.genres[i].name)
+            showGenres.push(item.genres[i].name);
         }
-        return showGenres.join(', ')
+        return showGenres.join(", ");
     }
 
     // zatim nefunguje jak ma, nezustane ulozeny state a refreshuje stranku
-    function movieFavourite (e) {
-        e.preventDefault()
-        setFavourite(!favourite)
+    function movieFavourite(e) {
+        e.preventDefault();
+        setFavourite(!favourite);
     }
 
     // ! STYLING
@@ -101,11 +102,17 @@ const MovieDetails = () => {
                             <div className="movie-details__poster--wrap">
                                 <div>
                                     {favourite ? (
-                                        <i onClick={movieFavourite} className="material-icons star star-active">
+                                        <i
+                                            onClick={movieFavourite}
+                                            className="material-icons star star-active"
+                                        >
                                             star
                                         </i>
                                     ) : (
-                                        <i onClick={movieFavourite} className="material-icons star star-inactive">
+                                        <i
+                                            onClick={movieFavourite}
+                                            className="material-icons star star-inactive"
+                                        >
                                             star_border
                                         </i>
                                     )}
@@ -124,25 +131,28 @@ const MovieDetails = () => {
                                             {item.title}
                                         </h1>
                                         <div className="info--content__heading-facts">
-
                                             <span className="info--content__heading-facts-genres">
                                                 {getGenre()}
                                             </span>
-                                            <i className="material-icons bullet">fiber_manual_record</i>
+                                            <i className="material-icons bullet">
+                                                fiber_manual_record
+                                            </i>
                                             <span className="release">
                                                 {date(item.release_date)}
                                             </span>
 
-                                            <i className="material-icons bullet">fiber_manual_record</i>
+                                            <i className="material-icons bullet">
+                                                fiber_manual_record
+                                            </i>
                                             <span className="run-time">
                                                 {time_convert(
                                                     parseInt(item.runtime)
                                                 )}
                                             </span>
                                         </div>
-                                    <div className="info--content__score-wrap">
-                                        <h2>{item.vote_average}/10</h2>
-                                    </div>
+                                        <div className="info--content__score-wrap">
+                                            <h2>{item.vote_average}/10</h2>
+                                        </div>
                                     </div>
 
                                     {/* overview */}
@@ -167,11 +177,10 @@ const MovieDetails = () => {
             </div>
 
             {/* back button */}
-            <Link to="/" className="movie-details__back-btn">
-                <div className="movie-details__back-wrap">
-                    <i className="material-icons">arrow_back</i>
-                </div>
-            </Link>
+            <div className="movie-details__back-wrap"
+                onClick={() => history.goBack()}>
+                <i className="material-icons">arrow_back</i>
+            </div>
         </div>
     );
 };

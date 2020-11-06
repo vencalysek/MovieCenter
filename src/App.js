@@ -32,7 +32,7 @@ export default App;
  * // todo: movie details - main logic done
  * 
  * // todo: homepage
- * todo: movie details back button
+ * // todo: movie details back button
  * // todo: search api
  * todo: save favourit
  * 
