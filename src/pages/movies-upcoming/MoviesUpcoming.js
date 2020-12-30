@@ -30,7 +30,7 @@ const MoviesUpcoming = () => {
         <img src={spinner} alt="loading" className="spinner" />
     ) : (
         <div className="movie-section now-playing">
-            <div className="main-section__heading">Top Rated</div>
+            <div className="main-section__heading">Upcoming</div>
             <div className="container-fliud main-section__wrap">
                 <div className="row">
                     {items.map((item) => (

@@ -11,7 +11,6 @@ const NOW_PLAYING = `${API_URL}/movie/now_playing?api_key=${API_KEY}`
 const POPULAR = `${API_URL}/movie/popular?api_key=${API_KEY}`
 const TOP_RATED = `${API_URL}/movie/top_rated?api_key=${API_KEY}`
 const UPCOMING = `${API_URL}/movie/upcoming?api_key=${API_KEY}`
-const MOVIE_DETAILS = `${API_URL}/movie/upcoming?api_key=${API_KEY}`
 
 
 

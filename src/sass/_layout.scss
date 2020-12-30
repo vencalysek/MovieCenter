@@ -28,4 +28,30 @@
 .main-section {
     background-color: $dark-1;
     flex: 1;
+    position: relative;    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__heading {
+        display: flex;
+        align-items: flex-end;
+        margin-bottom: 1rem;
+        font-size: 2.4rem;
+    }
+
+
+    &__wrap {
+        height: 100%;
+    }
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+}
+.movie-section {
+    margin: 1rem 0rem 1rem 2rem;
+        height: calc(100vh - 7rem);
+        // height: 100%;
+        overflow: scroll;
+        overflow-x: hidden;
 }
