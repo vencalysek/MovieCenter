@@ -1,4 +1,5 @@
 import React from "react";
+import Search from "../searchbar/Search";
 import './header.styles.scss'
 
 const Header = () => {
@@ -9,15 +10,8 @@ const Header = () => {
                     <a href="/">MovieCenter</a>
                 </p>
             </div>
+            <Search />
 
-            {/* <form action="#" className="search">
-                <input
-                    type="text"
-                    className="search__input"
-                    placeholder="Search movies..."
-                />
-                <i className="material-icons search__icon">search</i>
-            </form> */}
             <div className="user">User</div>
         </header>
     );

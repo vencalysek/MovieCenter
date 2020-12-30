@@ -26,7 +26,7 @@ const Home = () => {
         <div className="movie-section home">
             <h1><strong>Welcome to MovieCenter</strong></h1>
             <h2>Explore this website to find a desired movies</h2>
-            <Search fetchItems={fetchItems} />
+            {/* <Search fetchItems={fetchItems} /> */}
             
             {isLoading ? (
         <img src={spinner} alt="loading" className="spinner" />
