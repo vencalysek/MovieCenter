@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 // api
 import axios from "axios";
-import { API_KEY, API_URL } from "../ApiConfig";
+import { API_KEY, API_URL } from "../../ApiConfig";
 
 // router
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
-import spinner from "../img/spinner.jpg";
+import spinner from "../../img/spinner.jpg";
+
+import './movieDetails.styles.scss'
 
 const MovieDetails = () => {
     // ! API CALL

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { UPCOMING } from "../ApiConfig";
-import MovieCard from "../components/MovieCard";
-import spinner from "../img/spinner.jpg";
+import { UPCOMING } from "../../ApiConfig";
+import MovieCard from "../../components/movie-card/MovieCard";
+import spinner from "../../img/spinner.jpg";
 
 const MoviesUpcoming = () => {
     // useState Hook. items -> itemy ktere pretahneme z API, setItems -> funkce ktera     manipuluje state

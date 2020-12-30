@@ -1,8 +1,8 @@
 import "./sass/App.scss";
 import React, { useState, useEffect } from "react";
-import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
-import MainSection from "./components/MainSection";
+import Header from "./components/header/Header";
+import Sidebar from "./components/side-bar/Sidebar";
+import MainSection from "./components/main-section/MainSection";
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
 import axios from "axios";
 import { API_KEY, API_URL } from "./ApiConfig";

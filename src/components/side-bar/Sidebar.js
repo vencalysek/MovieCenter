@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
-import Footer from "./Footer";
+import Footer from "../footer/Footer";
+import './sidebar.styles.scss'
 
 const Sidebar = () => {
     return (

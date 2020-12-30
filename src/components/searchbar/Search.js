@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import './search.styles.scss'
+
 const Search = ({ fetchItems }) => {
     const [searchText, setSearchText] = useState("");
 

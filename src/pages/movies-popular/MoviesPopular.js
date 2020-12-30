@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { POPULAR } from "../ApiConfig";
-import MovieCard from "../components/MovieCard";
-import spinner from "../img/spinner.jpg";
+import { POPULAR } from "../../ApiConfig";
+import MovieCard from "../../components/movie-card/MovieCard";
+import spinner from "../../img/spinner.jpg";
 
 const PopularMovies = () => {
     // useState Hook. items -> itemy ktere pretahneme z API, setItems -> funkce ktera     manipuluje state

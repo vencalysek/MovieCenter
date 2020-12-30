@@ -1,0 +1,17 @@
+@import '../../sass/base';
+
+.home {
+    margin: 0 !important;
+    position: relative;
+    background-image: linear-gradient($dark-1 5rem, rgba(black, 0.8)),
+        url("./home-hero.jpg");
+    
+        &__wrap {
+            margin-top: 15rem;
+        }
+        & h1,
+        & h2 {
+            margin: 1rem 0 0 2rem;
+            text-align: center;
+        }
+}

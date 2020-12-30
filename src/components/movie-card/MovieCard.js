@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import imageNotLoad from '../img/img_404.jpg'
+import imageNotLoad from '../../img/img_404.jpg'
+import './movieCard.styles.scss'
 
 const clg = (id) => {
     // console.log(id)
