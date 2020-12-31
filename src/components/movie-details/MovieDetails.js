@@ -23,7 +23,7 @@ const MovieDetails = () => {
   const fetchItem = async () => {
     try {
       const result = await axios(`${API_URL}/movie/${movieId}?api_key=${API_KEY}`);
-      console.log(result.data);
+      // console.log(result.data);
 
       //todo: vlozit data pomoci setItem do state
       setItem(result.data);
