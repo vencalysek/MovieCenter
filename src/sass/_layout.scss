@@ -1,57 +1,57 @@
 .app {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 .header {
-    // height: 10vh;
-    height: 7rem;
-    background-color: $primary-light;
-    display: flex;
+  // height: 10vh;
+  height: 7rem;
+  background-color: $primary-light;
+  display: flex;
 }
 
 .content {
-    display: flex;
-    flex: 1;
-    height: calc(100vh - 7rem);
+  display: flex;
+  flex: 1;
+  height: calc(100vh - 7rem);
 }
 
 .sidebar {
-    background-color: $dark-2;
-    width: 250px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  background-color: $dark-2;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .main-section {
-    background-color: $dark-1;
-    flex: 1;
-    position: relative;    
+  background-color: $dark-1;
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__heading {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 1rem;
+    font-size: 2.4rem;
+  }
 
-    &__heading {
-        display: flex;
-        align-items: flex-end;
-        margin-bottom: 1rem;
-        font-size: 2.4rem;
-    }
-
-
-    &__wrap {
-        height: 100%;
-    }
-    &::-webkit-scrollbar-track {
-        background: #f1f1f1;
-    }
+  &__wrap {
+    height: 100%;
+  }
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
 }
 .movie-section {
-    margin: 1rem 0rem 1rem 2rem;
-        height: calc(100vh - 7rem);
-        // height: 100%;
-        overflow: scroll;
-        overflow-x: hidden;
+  font-family: "Open Sans", sans-serif;
+  margin: 1rem 0rem 1rem 2rem;
+  height: calc(100vh - 7rem);
+  // height: 100%;
+  overflow: scroll;
+  overflow-x: hidden;
 }

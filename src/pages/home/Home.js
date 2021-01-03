@@ -9,24 +9,25 @@ import './home.styles.scss'
 
 const Home = () => {
 
+    const searchQuery = null
+
     const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    console.log(items)
-    const fetchItems = async (query) => {
+
+    const fetchItems = async () => {
         setIsLoading(true);
         const result = await axios (
-            `${API_URL}/search/movie?api_key=${API_KEY}&query=${query}`
+            `${API_URL}/search/movie?api_key=${API_KEY}&query=${searchQuery}`
         );
+        console.log(result.data.results)
         setItems(result.data.results)
         setIsLoading(false);
     }
 
-
     return (
         <div className="movie-section home">
-            <h1><strong>Welcome to MovieCenter</strong></h1>
+            <h1>Welcome to MovieCenter</h1>
             <h2>Explore this website to find a desired movies</h2>
-            {/* <Search fetchItems={fetchItems} /> */}
             
             {isLoading ? (
         <img src={spinner} alt="loading" className="spinner" />

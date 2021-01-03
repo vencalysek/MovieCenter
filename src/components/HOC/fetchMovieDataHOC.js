@@ -10,7 +10,7 @@ const fetchMovieDataHOC = WrappedComponents => {
     // call na API
     const fetchItems = async () => {
       const result = await axios(url);
-      console.log(result.data.results);
+      // console.log(result.data.results);
 
       //todo: vlozit data pomoci setItems do state
       setItems(result.data.results.slice(0, 20));
@@ -20,7 +20,7 @@ const fetchMovieDataHOC = WrappedComponents => {
 
     useEffect(() => {
       fetchItems();
-    }, []);
+    },[]);
 
     console.log(items)
 

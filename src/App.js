@@ -1,9 +1,9 @@
 import "./sass/App.scss";
-import React from "react";
+import React, {useState} from "react";
 import Header from "./components/header/Header";
 import Sidebar from "./components/side-bar/Sidebar";
 import {Switch, Route, Redirect} from "react-router-dom";
-import {NOW_PLAYING, POPULAR, TOP_RATED, UPCOMING} from "./ApiConfig";
+import {API_KEY, API_URL, NOW_PLAYING, POPULAR, TOP_RATED, UPCOMING} from "./ApiConfig";
 
 import Home from "./pages/home/Home";
 import MoviesNowPlaying from "./pages/movies-now-plaing/MoviesNowPlaying";
@@ -11,11 +11,24 @@ import MoviesPopular from "./pages/movies-popular/MoviesPopular";
 import MoviesUpcoming from "./pages/movies-upcoming/MoviesUpcoming";
 import MoviesTopRated from "./pages/movies-top-rated/MoviesTopRated";
 import MovieDetails from "./components/movie-details/MovieDetails";
+import MoviesSearched from "./pages/movies-searched/MoviesSearched";
 
 const App = () => {
+
+  const [searchQuery, setSearchQuery] = useState('')
+  const [savedQuery, setSavedQuery] = useState('')
+
+  const getQuery = (query) =>{
+    setSearchQuery(query)
+  }
+
+  const getSavedQuery = (query) =>{
+    setSavedQuery(query)
+  }
+
   return (
     <div className="app">
-      <Header />
+      <Header getQuery={getQuery} />
       <div className="content">
         <Sidebar />
         <div className="main-section">
@@ -39,6 +52,10 @@ const App = () => {
               render={props => <MoviesUpcoming {...props} url={UPCOMING} />}
             />
 
+            <Route path="/search=:searchQuery" render={ props=> <MoviesSearched getSavedQuery={getSavedQuery} {...props} 
+            url={`${API_URL}/search/movie?api_key=${API_KEY}&query=${searchQuery}`} />} />
+
+
             <Route path="/movie/:movieId" component={MovieDetails} />
           </Switch>
         </div>
@@ -48,18 +65,3 @@ const App = () => {
 };
 
 export default App;
-
-// TODO
-/********
- *
- * // todo: routing - done
- * // todo: movie details - main logic done
- *
- * // todo: homepage
- * // todo: movie details back button
- * // todo: search api
- * todo: save favourit
- *
- * todo: improving movie details with actors, pic and vids
- * todo: will see
- */

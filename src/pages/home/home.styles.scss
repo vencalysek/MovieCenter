@@ -1,6 +1,7 @@
 @import '../../sass/base';
 
 .home {
+    font-family: 'Open Sans', sans-serif;
     margin: 0 !important;
     position: relative;
     background-image: linear-gradient($dark-1 5rem, rgba(black, 0.8)),
@@ -13,5 +14,8 @@
         & h2 {
             margin: 1rem 0 0 2rem;
             text-align: center;
+        }
+        & h1 {
+            font-weight: 700;
         }
 }

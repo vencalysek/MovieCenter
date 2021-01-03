@@ -4,7 +4,7 @@ import fetchMovieDataHOC from "../../components/HOC/fetchMovieDataHOC";
 
 const MoviesUpcoming = ({items}) => {
   return (
-    <div className="movie-section now-playing">
+    <div className="movie-section">
       <div className="main-section__heading">Upcoming</div>
       <div className="container-fliud main-section__wrap">
         <div className="row">

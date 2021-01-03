@@ -2,7 +2,7 @@ import React from "react";
 import Search from "../searchbar/Search";
 import './header.styles.scss'
 
-const Header = () => {
+const Header = ({getQuery}) => {
     return (
         <header className="header">
             <div className="header__logo-wrapper">
@@ -10,7 +10,7 @@ const Header = () => {
                     <a href="/">MovieCenter</a>
                 </p>
             </div>
-            <Search />
+            <Search getQuery={getQuery} />
 
             <div className="user">User</div>
         </header>
