@@ -1,0 +1,12 @@
+@import '../../sass/base';
+
+.item-collection__container {
+  margin: 1.5rem 3rem;
+  width: 1230px;
+  overflow: auto;
+
+  &--sides {
+    display: inline-flex;
+  }
+}
+

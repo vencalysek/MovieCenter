@@ -1,0 +1,17 @@
+@import '../../sass/base';
+
+.cast-card {
+  width: 150px;
+  background-color: transparent;
+
+  &__title,
+  &__subtitle {
+    margin-left: .5rem;
+  }
+  &__title {
+    margin-top: .5rem;
+  }
+  &__subtitle {
+    opacity: .8;
+  }
+}

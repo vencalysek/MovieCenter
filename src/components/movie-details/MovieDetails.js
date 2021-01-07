@@ -10,23 +10,27 @@ import {useHistory} from "react-router-dom";
 import spinner from "../../img/spinner.jpg";
 
 import "./movieDetails.styles.scss";
+import ScrollCollection from "../scroll-collection/ScrollCollection";
 
 const MovieDetails = () => {
   // ! API CALL
 
   const [item, setItem] = useState([]);
+  const [casts, setCasts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const {movieId} = useParams();
   const [favourite, setFavourite] = useState(false);
-  let history = useHistory();
+  const history = useHistory();
 
   const fetchItem = async () => {
     try {
-      const result = await axios(`${API_URL}/movie/${movieId}?api_key=${API_KEY}`);
-      // console.log(result.data);
-
+      const resultItem = await axios(`${API_URL}/movie/${movieId}?api_key=${API_KEY}`);
+      // console.log(resultItem.data);
       //todo: vlozit data pomoci setItem do state
-      setItem(result.data);
+      setItem(resultItem.data);
+
+      const resultCasts = await axios(`${API_URL}/movie/${movieId}/credits?api_key=${API_KEY}`);
+      setCasts(resultCasts.data.cast.slice(0,25))
       //todo: az se nactou data loading se zmeni na false
       setIsLoading(false);
     } catch (error) {}
@@ -37,6 +41,8 @@ const MovieDetails = () => {
       fetchItem();
     }, 500);
   }, []);
+
+  console.log(item)
 
   const time_convert = num => {
     let hours = Math.floor(num / 60);
@@ -88,6 +94,13 @@ const MovieDetails = () => {
     <img src={spinner} alt="loading" className="spinner" />
   ) : (
     <div className="movie-details">
+
+      {/* BACK BUTTON */}
+      <div className="movie-details__back-wrap" onClick={() => history.goBack()}>
+        <i className="material-icons">arrow_back</i>
+      </div>
+
+      {/* HERO */}
       <div className="movie-details__hero">
         <div className="movie-details__hero--img" style={styleHeroImage}>
           <div className="movie-details__hero--overlay" style={styleHeroOverlay}>
@@ -152,10 +165,12 @@ const MovieDetails = () => {
         </div>
       </div>
 
-      {/* back button */}
-      <div className="movie-details__back-wrap" onClick={() => history.goBack()}>
-        <i className="material-icons">arrow_back</i>
-      </div>
+      {/* CASTS */}
+      <br/>
+      <h2 className='cast-heading'>Cast in the lead roles</h2>
+      <ScrollCollection items={casts} />
+
+      
     </div>
   );
 };

@@ -29,6 +29,7 @@ body {
 
 ::-webkit-scrollbar {
     width: .75rem;
+    height: 1rem;
 }
 
 ::-webkit-scrollbar-track-piece {
@@ -36,8 +37,9 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    border-radius: 50px;
+    width: .75rem;
     background: $primary-light;
+    border-radius: 50px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
