@@ -2,7 +2,7 @@ import "./sass/App.scss";
 import React, {useState} from "react";
 import Header from "./components/header/Header";
 import Sidebar from "./components/side-bar/Sidebar";
-import {Switch, Route, Redirect} from "react-router-dom";
+import {Switch, Route} from "react-router-dom";
 import {API_KEY, API_URL, NOW_PLAYING, POPULAR, TOP_RATED, UPCOMING} from "./ApiConfig";
 
 import Home from "./pages/home/Home";
