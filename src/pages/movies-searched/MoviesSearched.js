@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import MovieCard from "../../components/movie-card/MovieCard";
 import fetchMovieDataHOC from "../../components/HOC/fetchMovieDataHOC";
 import {useParams} from "react-router-dom";
@@ -7,8 +7,7 @@ import {useParams} from "react-router-dom";
 const MoviesSearched = ({getSavedQuery, items}) => {
 
   const {searchQuery} = useParams();
-  // getSavedQuery(searchQuery)
-
+  
   return (
     <div className="movie-section movie-search">
       <div className="main-section__heading">You are looking for: "{searchQuery}"</div>

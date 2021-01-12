@@ -16,14 +16,9 @@ import MoviesSearched from "./pages/movies-searched/MoviesSearched";
 const App = () => {
 
   const [searchQuery, setSearchQuery] = useState('')
-  const [savedQuery, setSavedQuery] = useState('')
 
   const getQuery = (query) =>{
     setSearchQuery(query)
-  }
-
-  const getSavedQuery = (query) =>{
-    setSavedQuery(query)
   }
 
   return (
@@ -52,7 +47,7 @@ const App = () => {
               render={props => <MoviesUpcoming {...props} url={UPCOMING} />}
             />
 
-            <Route path="/search=:searchQuery" render={ props=> <MoviesSearched getSavedQuery={getSavedQuery} {...props} 
+            <Route path="/search=:searchQuery" render={ props=> <MoviesSearched {...props} 
             url={`${API_URL}/search/movie?api_key=${API_KEY}&query=${searchQuery}`} />} />
 
 

@@ -14,15 +14,15 @@ const Home = () => {
     const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
-    const fetchItems = async () => {
-        setIsLoading(true);
-        const result = await axios (
-            `${API_URL}/search/movie?api_key=${API_KEY}&query=${searchQuery}`
-        );
-        console.log(result.data.results)
-        setItems(result.data.results)
-        setIsLoading(false);
-    }
+    // const fetchItems = async () => {
+    //     setIsLoading(true);
+    //     const result = await axios (
+    //         `${API_URL}/search/movie?api_key=${API_KEY}&query=${searchQuery}`
+    //     );
+    //     console.log(result.data.results)
+    //     setItems(result.data.results)
+    //     setIsLoading(false);
+    // }
 
     return (
         <div className="movie-section home">
