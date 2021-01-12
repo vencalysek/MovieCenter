@@ -1,6 +1,5 @@
 import React, {useEffect} from "react";
 import MovieCard from "../../components/movie-card/MovieCard";
-import fetchMovieDataHOC from "../../components/HOC/fetchMovieDataHOC";
 import {useParams} from "react-router-dom";
 
 import {API_KEY, API_URL} from "../../ApiConfig";
@@ -19,8 +18,6 @@ const MoviesSearched = () => {
   useEffect(() => {
     dispatch(fetchMovies(url));
   }, [searchQuery]);
-
-  console.log(movies)
 
   return (
     <div className="movie-section movie-search">

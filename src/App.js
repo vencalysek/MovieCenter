@@ -20,7 +20,6 @@ const App = () => {
   const getQuery = (query) =>{
     setSearchQuery(query)
   }
-   console.log('searched: ',searchQuery )
 
   return (
     <div className="app">

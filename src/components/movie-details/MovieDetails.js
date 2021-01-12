@@ -12,37 +12,52 @@ import spinner from "../../img/spinner.jpg";
 import "./movieDetails.styles.scss";
 import ScrollCollection from "../scroll-collection/ScrollCollection";
 
+import {useSelector, useDispatch} from "react-redux";
+import {fetchMovieDetails} from '../../redux/movie-details/movie-details.action'
+import {fetchCasts} from '../../redux/casts/casts.action'
+
+
 const MovieDetails = () => {
   // ! API CALL
 
   const [item, setItem] = useState([]);
-  const [casts, setCasts] = useState([]);
+  // const [casts, setCasts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const {movieId} = useParams();
   const [favourite, setFavourite] = useState(false);
   const history = useHistory();
 
-  const fetchItem = async () => {
-    try {
-      const resultItem = await axios(`${API_URL}/movie/${movieId}?api_key=${API_KEY}`);
-      // console.log(resultItem.data);
-      //todo: vlozit data pomoci setItem do state
-      setItem(resultItem.data);
+  // const fetchItem = async () => {
+  //   try {
+  //     const resultCasts = await axios(`${API_URL}/movie/${movieId}/credits?api_key=${API_KEY}`);
+  //     setCasts(resultCasts.data.cast.slice(0,25))
+  //     //todo: az se nactou data loading se zmeni na false
+  //     // setIsLoading(false);
+  //   } catch (error) {}
+  // };
 
-      const resultCasts = await axios(`${API_URL}/movie/${movieId}/credits?api_key=${API_KEY}`);
-      setCasts(resultCasts.data.cast.slice(0,25))
-      //todo: az se nactou data loading se zmeni na false
-      setIsLoading(false);
-    } catch (error) {}
-  };
-
+  const {loading, movieDetails, error} = useSelector(state => state.movieDetails);
+  const {loadingCasts, casts, errorCasts} = useSelector(state => state.casts);
+  const dispatch = useDispatch();
+  const urlMovieDetails=`${API_URL}/movie/${movieId}?api_key=${API_KEY}`
+  const urlCasts = `${API_URL}/movie/${movieId}/credits?api_key=${API_KEY}`
+  
   useEffect(() => {
+    dispatch(fetchMovieDetails(urlMovieDetails));
     setTimeout(() => {
-      fetchItem();
+      setIsLoading(false);
     }, 500);
   }, []);
+  
+  
+  
+  useEffect(() => {
+    dispatch(fetchCasts(urlCasts));
+  }, []);
 
-  console.log(item)
+  console.log(movieDetails)
+  console.log('casts',casts)
+
 
   const time_convert = num => {
     let hours = Math.floor(num / 60);
@@ -52,8 +67,8 @@ const MovieDetails = () => {
 
   const getGenre = () => {
     let showGenres = [];
-    for (let i = 0; i < item.genres.length; i++) {
-      showGenres.push(item.genres[i].name);
+    for (let i = 0; i < movieDetails.genres.length; i++) {
+      showGenres.push(movieDetails.genres[i].name);
     }
     return showGenres.join(", ");
   };
@@ -67,7 +82,7 @@ const MovieDetails = () => {
   // ! STYLING
   // image styling
   const styleHeroImage = {
-    backgroundImage: `url(https://image.tmdb.org/t/p/w500${item.backdrop_path})`,
+    backgroundImage: `url(https://image.tmdb.org/t/p/w500${movieDetails.backdrop_path})`,
   };
 
   // colorst for imge overlay
@@ -122,14 +137,14 @@ const MovieDetails = () => {
                     </i>
                   )}
                 </div>
-                <img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt="" />
+                <img src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`} alt="" />
               </div>
               {/* info */}
               <div className="movie-details__info--wrap">
                 <section className="movie-details__info--content">
                   {/* heading */}
                   <div className="info--content__heading">
-                    <h1 className="info--content__heading-title">{item.title}</h1>
+                    <h1 className="info--content__heading-title">{movieDetails.title}</h1>
                     <div className="info--content__heading-facts">
                       <span className="info--content__heading-facts-genres">
                         {getGenre()}
@@ -137,25 +152,25 @@ const MovieDetails = () => {
                       <i className="material-icons bullet">fiber_manual_record</i>
 
                       <span className="release">
-                        {item.release_date.split("-").join("/")}
+                        {movieDetails.release_date.split("-").join("/")}
                       </span>
 
                       <i className="material-icons bullet">fiber_manual_record</i>
                       <span className="run-time">
-                        {time_convert(parseInt(item.runtime))}
+                        {time_convert(parseInt(movieDetails.runtime))}
                       </span>
                     </div>
                     <div className="info--content__score-wrap">
-                      <h2>{item.vote_average}/10</h2>
+                      <h2>{movieDetails.vote_average}/10</h2>
                     </div>
                   </div>
 
                   {/* overview */}
                   <div>
-                    <h3 className="info--content__tagline">{item.tagline}</h3>
+                    <h3 className="info--content__tagline">{movieDetails.tagline}</h3>
                     <div className="info--content__overview">
                       <h2 className="info--content__overview-title">Overview</h2>
-                      <p className="info--content__overview-content">{item.overview}</p>
+                      <p className="info--content__overview-content">{movieDetails.overview}</p>
                     </div>
                   </div>
                 </section>
