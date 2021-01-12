@@ -16,32 +16,34 @@ const Search = ({getQuery}) => {
   const handleSubmit = e => {
     if (searchQuery) {
       e.preventDefault();
-      setSearchQueryFinal(searchQuery)
+      setSearchQueryFinal(searchQuery);
       setRedirect(true);
     }
   };
 
   useEffect(() => {
-    getQuery(searchQueryFinal)
-      // vymaze input
-      setSearchQuery('')
-  }, [searchQueryFinal])
+    getQuery(searchQueryFinal);
+    // vymaze input
+    setSearchQuery("");
+  }, [searchQueryFinal]);
 
   return (
     <div>
       {redirect ? <Redirect to={`/search=${searchQueryFinal}`} /> : null}
-      <form action="#" className="search" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          className="search__input"
-          placeholder="Search movies..."
-          value={searchQuery}
-          onChange={handleInput}
-        />
+      <div className='searchbar-container' >
         <i className="material-icons search__icon" onClick={handleSubmit}>
           search
         </i>
-      </form>
+        <form action="#" className="searchbar" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            className="searchbar__input"
+            placeholder="Search movies..."
+            value={searchQuery}
+            onChange={handleInput}
+          />
+        </form>
+      </div>
     </div>
   );
 };
