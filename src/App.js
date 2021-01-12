@@ -20,6 +20,7 @@ const App = () => {
   const getQuery = (query) =>{
     setSearchQuery(query)
   }
+   console.log('searched: ',searchQuery )
 
   return (
     <div className="app">
@@ -47,8 +48,7 @@ const App = () => {
               render={props => <MoviesUpcoming {...props} url={UPCOMING} />}
             />
 
-            <Route path="/search=:searchQuery" render={ props=> <MoviesSearched {...props} 
-            url={`${API_URL}/search/movie?api_key=${API_KEY}&query=${searchQuery}`} />} />
+            <Route path="/search=:searchQuery" component={MoviesSearched} />
 
 
             <Route path="/movie/:movieId" component={MovieDetails} />
