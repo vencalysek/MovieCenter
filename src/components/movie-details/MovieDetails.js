@@ -15,6 +15,7 @@ import ScrollCollection from "../scroll-collection/ScrollCollection";
 import {useSelector, useDispatch} from "react-redux";
 import {fetchMovieDetails} from '../../redux/movie-details/movie-details.action'
 import {fetchCasts} from '../../redux/casts/casts.action'
+import CommentList from "../comment-list/CommentList";
 
 
 const MovieDetails = () => {
@@ -181,9 +182,12 @@ const MovieDetails = () => {
       </div>
 
       {/* CASTS */}
-      <br/>
-      <h2 className='cast-heading'>Cast in the lead roles</h2>
-      <ScrollCollection items={casts} />
+      {/* <br/> */}
+      <ScrollCollection collectionTitle='Cast in the lead roles' items={casts} />
+
+
+      {/* COMMENTS */}
+      <CommentList />
 
       
     </div>

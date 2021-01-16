@@ -1,6 +1,7 @@
 @import "../../sass/base";
 
 .movie-details {
+  
   height: 100%;
   background-color: $dark-1;
   position: relative;
@@ -168,9 +169,4 @@
 .bullet {
   font-size: 1rem;
   margin: 0 1rem;
-}
-
-.cast-heading {
-  margin-left: 3rem;
-  margin-bottom: 0;
 }

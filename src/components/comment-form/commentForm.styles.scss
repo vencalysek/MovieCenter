@@ -1,0 +1,14 @@
+@import '../../sass/base';
+
+.form-control-lg:focus {
+  outline: none;
+  box-shadow:none !important;
+}
+
+button:active{
+  background: $primary-dark;
+}
+button:focus {
+  outline: none;
+  box-shadow:none !important;
+}
