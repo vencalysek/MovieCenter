@@ -15,6 +15,8 @@ import ScrollCollection from "../scroll-collection/ScrollCollection";
 import {useSelector, useDispatch} from "react-redux";
 import {fetchMovieDetails} from '../../redux/movie-details/movie-details.action'
 import {fetchCasts} from '../../redux/casts/casts.action'
+
+
 import CommentList from "../comment-list/CommentList";
 
 
@@ -38,7 +40,8 @@ const MovieDetails = () => {
   // };
 
   const {loading, movieDetails, error} = useSelector(state => state.movieDetails);
-  const {loadingCasts, casts, errorCasts} = useSelector(state => state.casts);
+  const {casts} = useSelector(state => state.casts);
+
   const dispatch = useDispatch();
   const urlMovieDetails=`${API_URL}/movie/${movieId}?api_key=${API_KEY}`
   const urlCasts = `${API_URL}/movie/${movieId}/credits?api_key=${API_KEY}`
@@ -187,7 +190,7 @@ const MovieDetails = () => {
 
 
       {/* COMMENTS */}
-      <CommentList />
+      <CommentList movieId={movieId} />
 
       
     </div>

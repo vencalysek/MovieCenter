@@ -1,9 +1,17 @@
 import "./sass/App.scss";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Header from "./components/header/Header";
 import Sidebar from "./components/side-bar/Sidebar";
 import {Switch, Route} from "react-router-dom";
 import {API_KEY, API_URL, NOW_PLAYING, POPULAR, TOP_RATED, UPCOMING} from "./ApiConfig";
+
+// firebase
+import {useAuthState} from "react-firebase-hooks/auth";
+import {auth} from "./firebase/firebase.config";
+
+// redux
+import {useDispatch} from "react-redux";
+import {setCurrentUser} from "./redux/user/user.actions";
 
 import Home from "./pages/home/Home";
 import MoviesNowPlaying from "./pages/movies-now-plaing/MoviesNowPlaying";
@@ -14,12 +22,21 @@ import MovieDetails from "./components/movie-details/MovieDetails";
 import MoviesSearched from "./pages/movies-searched/MoviesSearched";
 
 const App = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [currentUser] = useAuthState(auth);
 
-  const [searchQuery, setSearchQuery] = useState('')
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    if (currentUser) {
+      const {displayName, email, photoURL, uid} = currentUser
+      dispatch(setCurrentUser({displayName, email, photoURL, uid}));
+    }
+  }, [currentUser]);
 
-  const getQuery = (query) =>{
-    setSearchQuery(query)
-  }
+  const getQuery = query => {
+    setSearchQuery(query);
+  };
 
   return (
     <div className="app">
@@ -29,7 +46,7 @@ const App = () => {
         <div className="main-section">
           <Switch>
             <Route path="/" exact component={Home} />
-            
+
             <Route
               path="/now_playing"
               render={props => <MoviesNowPlaying {...props} url={NOW_PLAYING} />}
@@ -48,7 +65,6 @@ const App = () => {
             />
 
             <Route path="/search=:searchQuery" component={MoviesSearched} />
-
 
             <Route path="/movie/:movieId" component={MovieDetails} />
           </Switch>

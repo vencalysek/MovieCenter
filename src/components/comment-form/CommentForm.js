@@ -1,18 +1,29 @@
 import React, {useState} from "react";
 import "./commentForm.styles.scss";
 
-const CommentForm = () => {
+import firebase from "firebase/app";
+import {firestore} from "../../firebase/firebase.config";
+
+const CommentForm = ({commentsRef}) => {
   const [comment, setComment] = useState("");
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     console.log(comment);
+
+    await commentsRef.add({
+      commentContent: comment,
+      createdAt: new Date(),
+      id: Math.random(),
+      // uid,
+    });
+
     setComment("");
   };
 
   return (
-    <form onSubmit={handleSubmit} >
-      <div className="form-group m-3 ml-5">
+    <form onSubmit={handleSubmit}>
+      <div className="form-group m-3 ">
         {" "}
         <div className="form-group">
           <label for="comment-message">Write whats on your mind...</label>
@@ -22,7 +33,6 @@ const CommentForm = () => {
             id="comment-message"
             className="form-control-lg mb-2"
             rows="3"
-            cols="80"
             placeholder="Write your comment..."
             value={comment}
             onChange={e => setComment(e.target.value)}></textarea>

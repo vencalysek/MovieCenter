@@ -1,8 +1,21 @@
 .comment-list {
   margin: 3rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 5rem;
 
   &__heading {
     font-size: 2.1rem;
+  }
+
+  &__wrapper {
+    position: relative;
+
+    & p {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 }
