@@ -7,7 +7,8 @@ import {API_KEY, API_URL, NOW_PLAYING, POPULAR, TOP_RATED, UPCOMING} from "./Api
 
 // firebase
 import {useAuthState} from "react-firebase-hooks/auth";
-import {auth} from "./firebase/firebase.config";
+import {useCollectionData, useDocumentOnce} from "react-firebase-hooks/firestore";
+import {auth, firestore} from "./firebase/firebase.config";
 
 // redux
 import {useDispatch} from "react-redux";
@@ -23,17 +24,55 @@ import MoviesSearched from "./pages/movies-searched/MoviesSearched";
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const dispatch = useDispatch();
+
+  // logging in
   const [user] = useAuthState(auth);
 
-  const dispatch = useDispatch();
-  
-  useEffect(() => {
-    if (user) {
-      const {displayName, email, photoURL, uid} = user
-      dispatch(setCurrentUser({displayName, email, photoURL, uid}));
-    }
-  }, [user]);
+  // creating user profile in firestore
+  const userRef = user && firestore.doc(`users/${user.uid}`);
+  const [userSnap] = useDocumentOnce(userRef);
 
+  // ***************************USER COLLECTION DOCUMENTS
+  // const userRefCollection = userRef && userRef.collection('123123qwe')
+  // const userCollection = useCollectionData(userRefCollection)
+  // console.log('userCollection', userCollection)
+  // ***************************USER COLLECTION DOCUMENTS
+
+  //*** CREATING PROFILE DOC FUNCTION
+  const createUserProfileDoc = async (displayName, email, photoURL, uid) => {
+    if (!userSnap.exists) {
+      const createdAt = new Date();
+
+      try {
+        await userRef.set({
+          displayName,
+          email,
+          photoURL,
+          uid,
+          createdAt,
+        });
+      } catch (error) {
+        console.log("error creating user", error.message);
+      }
+    } else {
+      return userRef;
+    }
+
+    userRef.onSnapshot(snapShot => console.log(snapShot))
+  };
+
+  //*** LOGING IN FUNCTION
+  useEffect(() => {
+    if (userSnap) {
+      const {displayName, email, photoURL, uid} = user;
+      dispatch(setCurrentUser({displayName, email, photoURL, uid}));
+      createUserProfileDoc(displayName, email, photoURL, uid)
+    }
+  }, [userSnap]);
+
+
+  // *** SEARCH QUERY FUNCTION --> rebuild to redux
   const getQuery = query => {
     setSearchQuery(query);
   };

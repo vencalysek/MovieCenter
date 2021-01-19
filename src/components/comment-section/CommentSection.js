@@ -1,6 +1,5 @@
 import React from "react";
 import CommentForm from "../comment-form/CommentForm";
-import Comment from "../comment/Comment";
 import './commentSection.styles.scss'
 
 import {useCollectionData} from "react-firebase-hooks/firestore";
