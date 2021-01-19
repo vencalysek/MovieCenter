@@ -1,18 +1,22 @@
 import React, {useState} from "react";
+import { useSelector } from "react-redux";
 import "./commentForm.styles.scss";
 
 const CommentForm = ({commentsRef}) => {
   const [comment, setComment] = useState("");
 
+  const {currentUser} = useSelector(state => state.user)
+
   const handleSubmit = async e => {
     e.preventDefault();
-    console.log(comment);
 
     await commentsRef.add({
       commentContent: comment,
       createdAt: new Date(),
-      id: Math.random(),
-      // uid,
+      id: commentsRef.doc().id,
+      userID: currentUser.uid,
+      userName: currentUser.displayName,
+      userPhotoURL: currentUser.photoURL
     });
 
     setComment("");

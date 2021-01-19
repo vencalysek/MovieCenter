@@ -15,7 +15,7 @@ const CommentList = ({comments}) => {
             ))}
           </>
         ) : (
-          <p>No comments yet...</p>
+          <p className='comment-list__missing' >No comments yet...</p>
         )}
       </div>
   );
