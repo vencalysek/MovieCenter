@@ -10,14 +10,26 @@ const CommentForm = ({commentsRef}) => {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    await commentsRef.add({
-      commentContent: comment,
-      createdAt: new Date(),
-      id: commentsRef.doc().id,
-      userID: currentUser.uid,
-      userName: currentUser.displayName,
-      userPhotoURL: currentUser.photoURL
-    });
+    if (currentUser) {
+      
+      await commentsRef.add({
+        commentContent: comment,
+        createdAt: new Date(),
+        id: commentsRef.doc().id,
+        userID: currentUser.uid,
+        userName: currentUser.displayName,
+        userPhotoURL: currentUser.photoURL
+      });
+    } else {
+      await commentsRef.add({
+        commentContent: comment,
+        createdAt: new Date(),
+        id: commentsRef.doc().id,
+        userName: 'Unregistered user',
+        // userPhotoURL: currentUser.photoURL
+      });
+    }
+    
 
     setComment("");
   };

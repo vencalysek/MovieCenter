@@ -28,6 +28,7 @@ const App = () => {
 
   // logging in
   const [user] = useAuthState(auth);
+  console.log(user)
 
   // creating user profile in firestore
   const userRef = user && firestore.doc(`users/${user.uid}`);
@@ -59,7 +60,7 @@ const App = () => {
       return userRef;
     }
 
-    userRef.onSnapshot(snapShot => console.log(snapShot))
+    // userRef.onSnapshot(snapShot => console.log(snapShot))
   };
 
   //*** LOGING IN FUNCTION

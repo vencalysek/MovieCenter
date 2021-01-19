@@ -1,29 +1,26 @@
 import React from "react";
-import './comment.styles.scss'
+import "./comment.styles.scss";
+import { ReactComponent as Avatar} from '../../assets/avatar.svg'
 
 const Comment = ({comment}) => {
-  const exactTime = comment.createdAt && comment.createdAt.toDate().toLocaleTimeString().slice(0,-3)
-  const createDate = comment.createdAt && comment.createdAt.toDate().toLocaleDateString().split('')
-  createDate.splice(-4,2)
+  const {userPhotoURL, commentContent, userName, createdAt} = comment;
+  const exactTime = createdAt && createdAt.toDate().toLocaleTimeString().slice(0, -3);
+  const createDate = createdAt && createdAt.toDate().toLocaleDateString().split("");
+  createDate.splice(-4, 2);
+
 
   return (
     <div className="comment__wrapper">
       <div className="media">
-        <img
-          className="mr-3"
-          src="https://lh3.googleusercontent.com/ogw/ADGmqu-ZGtKB14PEvXgKIsjVxzH3P8QCno23eSiyjWHa=s83-c-mo"
-          alt="Generic placeholder image"
-        />
+        { userPhotoURL ? <img className="comment__user-image mr-3" src={userPhotoURL} alt="avatar" /> : <Avatar className='comment-avatar mr-3' />}
         <div className="media-body">
           <div className="heading d-flex justify-content-between">
-            <h3 className="comment-title">
-              {/* <strong>{comment.userName}</strong> */}
-            </h3>
-            <h4 className="text-muted">{exactTime} | {createDate.join('')}</h4>
+            <h3 className="comment-title">{userName}</h3>
+            <h4 className="text-muted">
+              {exactTime} | {createDate.join("")}
+            </h4>
           </div>
-          <span className='comment-content' >
-            {comment.commentContent}
-          </span>
+          <span className="comment-content">{commentContent}</span>
         </div>
       </div>
     </div>

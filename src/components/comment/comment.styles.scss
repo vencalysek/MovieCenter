@@ -1,6 +1,7 @@
 @import "../../sass/base";
 
 .comment {
+  font-family: "Open Sans", sans-serif;
   &__wrapper {
     margin-bottom: 1rem;
     border: solid 1px $light-2;
@@ -10,15 +11,24 @@
   
   &-title {
     color: $light-1;
+    font-family: "Open Sans", sans-serif;
   }
   
   &-content {
     color: $light-2;
-    font-family: "Open Sans", sans-serif;
+  }
+  &__user-image {
+    width: 7rem;
+    height: 7rem;
   }
 }
 
 .media {
   display: flex;
-  align-items: center;
+}
+
+.comment-avatar {
+  height: 7rem;
+  width: 7rem;
+  fill: $light-2;
 }

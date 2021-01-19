@@ -1,8 +1,8 @@
 import React from "react";
 import Search from "../searchbar/Search";
 import "./header.styles.scss";
-import {auth, signInWithGoogle} from '../../firebase/firebase.config'
 
+import HeaderUserSection from "../header-user-section/HeaderUserSection";
 
 const Header = ({getQuery}) => {
   return (
@@ -14,10 +14,7 @@ const Header = ({getQuery}) => {
       </div>
       <Search getQuery={getQuery} />
 
-      <div className="user">User
-       <button onClick={signInWithGoogle}>SignIN</button>
-      </div>
-
+      <HeaderUserSection />
     </header>
   );
 };
