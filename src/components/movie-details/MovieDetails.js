@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
 // api
-import axios from "axios";
 import {API_KEY, API_URL} from "../../ApiConfig";
 
 // router
@@ -17,7 +16,7 @@ import {fetchMovieDetails} from '../../redux/movie-details/movie-details.action'
 import {fetchCasts} from '../../redux/casts/casts.action'
 
 
-import CommentList from "../comment-list/CommentList";
+import CommentSection from '../comment-section/CommentSection'
 
 
 const MovieDetails = () => {
@@ -190,7 +189,7 @@ const MovieDetails = () => {
 
 
       {/* COMMENTS */}
-      <CommentList movieId={movieId} />
+      <CommentSection movieId={movieId} />
 
       
     </div>

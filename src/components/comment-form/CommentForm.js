@@ -1,9 +1,6 @@
 import React, {useState} from "react";
 import "./commentForm.styles.scss";
 
-import firebase from "firebase/app";
-import {firestore} from "../../firebase/firebase.config";
-
 const CommentForm = ({commentsRef}) => {
   const [comment, setComment] = useState("");
 
@@ -23,7 +20,7 @@ const CommentForm = ({commentsRef}) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="form-group m-3 ">
+      <div className="form-group">
         {" "}
         <div className="form-group">
           <label for="comment-message">Write whats on your mind...</label>
@@ -48,21 +45,3 @@ const CommentForm = ({commentsRef}) => {
 };
 
 export default CommentForm;
-
-{
-  /* <form method="post" onSubmit={handleSubmit}>
-        <label>Write whats on your mind...</label>
-        <textarea
-          className="mb-2"
-          rows="3"
-          cols="45"
-          placeholder="Write your comment..."
-          value={comment}
-          onChange={e => setComment(e.target.value)}
-        />
-
-        <button disabled={!comment} type="submit">
-          Add comment
-        </button>
-      </form> */
-}

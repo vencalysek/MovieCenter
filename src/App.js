@@ -23,16 +23,16 @@ import MoviesSearched from "./pages/movies-searched/MoviesSearched";
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [currentUser] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
   const dispatch = useDispatch();
   
   useEffect(() => {
-    if (currentUser) {
-      const {displayName, email, photoURL, uid} = currentUser
+    if (user) {
+      const {displayName, email, photoURL, uid} = user
       dispatch(setCurrentUser({displayName, email, photoURL, uid}));
     }
-  }, [currentUser]);
+  }, [user]);
 
   const getQuery = query => {
     setSearchQuery(query);
