@@ -4,27 +4,32 @@ import "./commentForm.styles.scss";
 
 const CommentForm = ({commentsRef}) => {
   const [comment, setComment] = useState("");
+  const [commentID, setCommentID] = useState('')
 
   const {currentUser} = useSelector(state => state.user)
 
+  const randomID = () => {
+    setCommentID(`${Math.random()}`)
+    console.log()
+  }
+
   const handleSubmit = async e => {
     e.preventDefault();
-
     if (currentUser) {
       
-      await commentsRef.add({
+      await commentsRef.doc(commentID).set({
         commentContent: comment,
         createdAt: new Date(),
-        id: commentsRef.doc().id,
+        id: commentID,
         userID: currentUser.uid,
         userName: currentUser.displayName,
         userPhotoURL: currentUser.photoURL
       });
     } else {
-      await commentsRef.add({
+      await commentsRef.set({
         commentContent: comment,
         createdAt: new Date(),
-        id: commentsRef.doc().id,
+        id: commentID,
         userName: 'Unregistered user',
       });
     }
@@ -32,6 +37,7 @@ const CommentForm = ({commentsRef}) => {
 
     setComment("");
   };
+
 
   return (
     <form onSubmit={handleSubmit}>
@@ -50,7 +56,7 @@ const CommentForm = ({commentsRef}) => {
             onChange={e => setComment(e.target.value)}></textarea>
         </div>
         <div className="form-group">
-          <button className="btn btn-lg" disabled={!comment} type="submit">
+          <button className="btn btn-lg" disabled={!comment} type="submit" onClick={randomID} >
             Add comment
           </button>
         </div>

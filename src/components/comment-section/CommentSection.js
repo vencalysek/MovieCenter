@@ -17,7 +17,7 @@ const CommentSection = ({movieId}) => {
   return (
     <div className="comment-section">
       <CommentForm commentsRef={commentsRef} />
-      <CommentList comments={comments} />
+      <CommentList comments={comments} commentsRef={commentsRef} />
     </div>
   );
 };

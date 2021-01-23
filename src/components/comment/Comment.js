@@ -2,12 +2,14 @@ import React from "react";
 import "./comment.styles.scss";
 import { ReactComponent as Avatar} from '../../assets/avatar.svg'
 
-const Comment = ({comment}) => {
-  const {userPhotoURL, commentContent, userName, createdAt} = comment;
+const Comment = ({comment, commentsRef}) => {
+  const {userPhotoURL, commentContent, userName, createdAt, id} = comment;
   
   const exactTime = createdAt && createdAt.toDate().toLocaleTimeString().slice(0, -3);
   const createDate = createdAt && createdAt.toDate().toLocaleDateString().split("");
   createDate.splice(-4, 2);
+
+  // const commentRef = comment && commentsRef.doc(comment.id)
 
   return (
     <div className="comment__wrapper">
@@ -23,6 +25,7 @@ const Comment = ({comment}) => {
           <span className="comment-content">{commentContent}</span>
         </div>
       </div>
+      <button onClick={() => commentsRef.doc(id).delete()} >delete</button>
     </div>
   );
 };

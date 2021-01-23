@@ -3,7 +3,7 @@ import Comment from "../comment/Comment";
 import "./commentList.styles.scss";
 
 
-const CommentList = ({comments}) => {
+const CommentList = ({comments, commentsRef}) => {
 
   return (
     <div className="comment-list">
@@ -11,7 +11,7 @@ const CommentList = ({comments}) => {
           <>
             <h2 className="comment-list__heading">Comments</h2>
             {comments.map(comment => (
-              <Comment key={comment.id} comment={comment} />
+              <Comment key={comment.id} comment={comment} commentsRef={commentsRef} />
             ))}
           </>
         ) : (
