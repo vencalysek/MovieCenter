@@ -1,0 +1,25 @@
+@import "../../sass/base";
+
+.btn-favourite {
+  position: absolute;
+  font-size: 5rem;
+  top: 0.5rem;
+  left: 0.5rem;
+  cursor: pointer;
+
+  &__active {
+    color: gold;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__inactive {
+    color: $dark-1;
+    opacity: 0.7;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

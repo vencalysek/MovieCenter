@@ -4,10 +4,10 @@ import { ReactComponent as Avatar} from '../../assets/avatar.svg'
 
 const Comment = ({comment}) => {
   const {userPhotoURL, commentContent, userName, createdAt} = comment;
+  
   const exactTime = createdAt && createdAt.toDate().toLocaleTimeString().slice(0, -3);
   const createDate = createdAt && createdAt.toDate().toLocaleDateString().split("");
   createDate.splice(-4, 2);
-
 
   return (
     <div className="comment__wrapper">

@@ -3,8 +3,7 @@ import React, {useState, useEffect} from "react";
 import {API_KEY, API_URL} from "../../ApiConfig";
 
 // router
-import {useParams} from "react-router-dom";
-import {useHistory} from "react-router-dom";
+import {useParams, useHistory} from "react-router-dom";
 
 import spinner from "../../img/spinner.jpg";
 
@@ -17,27 +16,13 @@ import {fetchCasts} from '../../redux/casts/casts.action'
 
 
 import CommentSection from '../comment-section/CommentSection'
+import BtnFavourite from "../btn-favourite/BtnFavourite";
 
 
 const MovieDetails = () => {
-  // ! API CALL
-
-  const [item, setItem] = useState([]);
-  // const [casts, setCasts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const {movieId} = useParams();
-  const [favourite, setFavourite] = useState(false);
   const history = useHistory();
-
-  // const fetchItem = async () => {
-  //   try {
-  //     const resultCasts = await axios(`${API_URL}/movie/${movieId}/credits?api_key=${API_KEY}`);
-  //     setCasts(resultCasts.data.cast.slice(0,25))
-  //     //todo: az se nactou data loading se zmeni na false
-  //     // setIsLoading(false);
-  //   } catch (error) {}
-  // };
-
   const {loading, movieDetails, error} = useSelector(state => state.movieDetails);
   const {casts} = useSelector(state => state.casts);
 
@@ -52,15 +37,9 @@ const MovieDetails = () => {
     }, 500);
   }, []);
   
-  
-  
   useEffect(() => {
     dispatch(fetchCasts(urlCasts));
   }, []);
-
-  console.log(movieDetails)
-  console.log('casts',casts)
-
 
   const time_convert = num => {
     let hours = Math.floor(num / 60);
@@ -74,12 +53,6 @@ const MovieDetails = () => {
       showGenres.push(movieDetails.genres[i].name);
     }
     return showGenres.join(", ");
-  };
-
-  // zatim nefunguje jak ma, nezustane ulozeny state a refreshuje stranku
-  const movieFavourite = e => {
-    e.preventDefault();
-    setFavourite(!favourite);
   };
 
   // ! STYLING
@@ -125,21 +98,9 @@ const MovieDetails = () => {
             <div className="movie-details--wrap">
               {/* poster */}
               <div className="movie-details__poster--wrap">
-                <div>
-                  {favourite ? (
-                    <i
-                      onClick={movieFavourite}
-                      className="material-icons star star-active">
-                      star
-                    </i>
-                  ) : (
-                    <i
-                      onClick={movieFavourite}
-                      className="material-icons star star-inactive">
-                      star_border
-                    </i>
-                  )}
-                </div>
+
+                <BtnFavourite movieId={movieId} posterPath={movieDetails.poster_path} />
+                
                 <img src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`} alt="" />
               </div>
               {/* info */}
