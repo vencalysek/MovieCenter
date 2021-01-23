@@ -15,6 +15,8 @@ const HeaderUserSection = () => {
     dispatch(setCurrentUser(null))
   };
 
+  const userNameSplit = currentUser && currentUser.displayName.split(" ")
+
   return (
     <div className="header-user-section">
       
@@ -23,8 +25,8 @@ const HeaderUserSection = () => {
           <div className='sign-btn' onClick={logout}>Sign Out</div>
           <div className="user-avatar">
             <span>
-              {currentUser.displayName.split(" ")[0][0].toUpperCase()}
-              {currentUser.displayName.split(" ")[1][0].toUpperCase()}
+              {userNameSplit[0][0].toUpperCase()}
+              {userNameSplit[userNameSplit.length-1][0].toUpperCase()}
             </span>
           </div>
         </>
