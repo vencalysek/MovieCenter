@@ -26,7 +26,6 @@ const CommentForm = ({commentsRef}) => {
         createdAt: new Date(),
         id: commentsRef.doc().id,
         userName: 'Unregistered user',
-        // userPhotoURL: currentUser.photoURL
       });
     }
     
