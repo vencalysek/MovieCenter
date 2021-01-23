@@ -1,2 +1,32 @@
-@import './base';
-@import './layout';
+@import "./base";
+@import "./layout";
+
+.btn__wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn__load-more {
+  background-color: transparent;
+  color: $primary-dark;
+  cursor: pointer;
+  padding: 1rem 1.5rem;
+  outline: none !important;
+  border: 0.25rem solid $primary-dark;
+  border-radius: 50px;
+  transition-duration: 0.2s;
+  margin: 5rem;
+  font-size: 2rem;
+
+  &:hover {
+    background-color: $primary-light;
+    color: $dark-1;
+    border: 0.25rem solid $primary-light;
+  }
+  &:active {
+    background-color: $primary-dark;
+    border: 0.25rem solid $primary-dark;
+    color: $dark-2;
+  }
+}

@@ -2,7 +2,7 @@ import React from "react";
 import MovieCard from "../../components/movie-card/MovieCard";
 import fetchMovieDataHOC from "../../components/HOC/fetchMovieDataHOC";
 
-const MoviesNowPlaying = ({items}) => {
+const MoviesNowPlaying = ({items, loadMore}) => {
   return (
     <div className="movie-section">
       <div className="main-section__heading">Now Playing</div>
@@ -11,6 +11,11 @@ const MoviesNowPlaying = ({items}) => {
           {items.map(item => (
             <MovieCard key={item.id} item={item} />
           ))}
+        </div>
+        <div className="btn__wrap">
+          <button onClick={loadMore} className="btn__load-more">
+            Load more...
+          </button>
         </div>
       </div>
     </div>

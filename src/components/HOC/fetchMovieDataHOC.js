@@ -1,27 +1,38 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 
 import spinner from "../../img/spinner.jpg";
 
-
 import {useSelector, useDispatch} from "react-redux";
-import {fetchMovies} from '../../redux/movies/movies.actions'
-
+import {fetchMovies, fetchMoreMovies} from "../../redux/movies/movies.actions";
 
 const fetchMovieDataHOC = WrappedComponents => {
-  const WithData = ({url}) => {  
-
-    const {loading, movies, error} = useSelector(state => state.movies)
-    const dispatch = useDispatch()
+  const WithData = ({url}) => {
+    const [pageNum, setPageNum] = useState(2);
+    const {loading, movies, error} = useSelector(state => state.movies);
+    const dispatch = useDispatch();
 
     useEffect(() => {
       dispatch(fetchMovies(url));
     }, []);
-    
+
+    const loadMore = () => {
+      setPageNum(pageNum + 1);
+      dispatch(fetchMoreMovies(url, pageNum));
+    };
 
     return loading ? (
       <img src={spinner} alt="loading" className="spinner" />
     ) : (
-      <WrappedComponents items={movies} />
+      <>
+        <WrappedComponents items={movies} loadMore={loadMore} />
+        {/* <button className='btn__load-more'
+          onClick={() => {
+            setPageNum(pageNum + 1)
+            dispatch(fetchMoreMovies(url, pageNum));
+          }}>
+          Load more...
+        </button> */}
+      </>
     );
   };
 

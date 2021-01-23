@@ -17,7 +17,14 @@ const fetchMoviesReducer = (state = initState, action) => {
         return {
           ...state,
           loading: false,
-          movies: action.payload,
+          movies: [...action.payload],
+          error: ''
+        }
+      case MoviesActionTypes.FETCH_MORE_MOVIES_SUCCES:
+        return {
+          ...state,
+          loading: false,
+          movies: [...state.movies, ...action.payload],
           error: ''
         }
       case MoviesActionTypes.FETCH_MOVIES_FAILURE:

@@ -1,3 +1,5 @@
+@import "./base";
+
 .app {
   display: flex;
   flex-direction: column;
@@ -38,11 +40,13 @@
     display: flex;
     align-items: flex-end;
     margin-bottom: 1rem;
+    margin-left: 1.5rem;
     font-size: 2.4rem;
   }
 
   &__wrap {
     height: 100%;
+    align-items: center;
   }
   &::-webkit-scrollbar-track {
     background: #f1f1f1;
@@ -50,9 +54,10 @@
 }
 .movie-section {
   font-family: "Open Sans", sans-serif;
-  margin: 1rem 0rem 1rem 2rem;
+  margin: 1rem 0rem 0rem 2rem;
   height: calc(100vh - 7rem);
   // height: 100%;
   overflow: scroll;
   overflow-x: hidden;
+
 }

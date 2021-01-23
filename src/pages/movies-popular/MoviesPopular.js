@@ -2,7 +2,7 @@ import React from "react";
 import MovieCard from "../../components/movie-card/MovieCard";
 import fetchMovieDataHOC from "../../components/HOC/fetchMovieDataHOC";
 
-const PopularMovies = ({items}) => {
+const PopularMovies = ({items, loadMore}) => {
   return (
     <div className="movie-section">
       <div className="main-section__heading">Popular</div>
@@ -12,6 +12,9 @@ const PopularMovies = ({items}) => {
             <MovieCard key={item.id} item={item} />
           ))}
         </div>
+          <div className="btn__wrap">
+            <button onClick={loadMore} className="btn__load-more">Load more...</button>
+          </div>
       </div>
     </div>
   );
