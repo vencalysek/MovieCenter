@@ -26,7 +26,7 @@ const CommentForm = ({commentsRef}) => {
         userPhotoURL: currentUser.photoURL
       });
     } else {
-      await commentsRef.set({
+      await commentsRef.doc(commentID).set({
         commentContent: comment,
         createdAt: new Date(),
         id: commentID,
