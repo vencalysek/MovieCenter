@@ -2,7 +2,7 @@ import "./sass/App.scss";
 import React, {useEffect, useState} from "react";
 import Header from "./components/header/Header";
 import Sidebar from "./components/side-bar/Sidebar";
-import {Switch, Route} from "react-router-dom";
+import {Switch, Route, Redirect} from "react-router-dom";
 import {API_KEY, API_URL, NOW_PLAYING, POPULAR, TOP_RATED, UPCOMING} from "./ApiConfig";
 
 // firebase
@@ -21,7 +21,7 @@ import MoviesUpcoming from "./pages/movies-upcoming/MoviesUpcoming";
 import MoviesTopRated from "./pages/movies-top-rated/MoviesTopRated";
 import MovieDetails from "./components/movie-details/MovieDetails";
 import MoviesSearched from "./pages/movies-searched/MoviesSearched";
-import SignInSignUp from "./components/sign-in-sign-up/SignInSignUp";
+import SignInSignUpPage from "./pages/sign-in-sign-up/SignInSignUp";
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -82,12 +82,12 @@ const App = () => {
   return (
     <div className="app">
       <Header getQuery={getQuery} />
-      {/* <SignInSignUp /> */}
       <div className="content">
         <Sidebar />
         <div className="main-section">
           <Switch>
             <Route path="/" exact component={Home} />
+            <Route exact path='/signin' render={() => user ? (<Redirect to='/' />) : (<SignInSignUpPage />)} />
 
             <Route
               path="/now_playing"

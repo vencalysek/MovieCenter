@@ -7,7 +7,7 @@
 }
 
 .header {
-  // height: 10vh;
+  font-family: "Nunito", sans-serif;
   height: 7rem;
   background-color: $primary-light;
   display: flex;
@@ -20,6 +20,7 @@
 }
 
 .sidebar {
+  font-family: "Nunito", sans-serif;
   background-color: $dark-2;
   min-width: 250px;
   max-width: 250px;

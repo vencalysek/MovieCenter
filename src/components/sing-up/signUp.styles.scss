@@ -1,0 +1,41 @@
+@import '../../sass/base';
+
+.sign-in {
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    margin: 10px 0;
+  }
+
+  & span {
+    font-weight: 300;
+  }
+}
+
+.button {
+  cursor: pointer;
+  min-width: 16rem;
+  width: auto;
+  height: 5rem;
+  padding: 0 2rem 0 2rem;
+  background-color: transparent;
+  color: $light-1;
+  border: 1px solid $light-1;
+  transition: all 0.3s;
+  outline: none;
+  font-size: 1.6rem;
+
+  &:hover {
+    color: $dark-1;
+    background-color: $light-1;
+    border: 1px solid $dark-1;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+}

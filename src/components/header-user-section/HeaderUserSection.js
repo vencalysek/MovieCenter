@@ -4,6 +4,7 @@ import "./headerUserSection.styles.scss";
 
 import {useSelector, useDispatch} from "react-redux";
 import {setCurrentUser} from "../../redux/user/user.actions";
+import { Link } from "react-router-dom";
 
 
 const HeaderUserSection = () => {
@@ -22,7 +23,7 @@ const HeaderUserSection = () => {
       
       {currentUser ? (
         <>
-          <div className='sign-btn' onClick={logout}>Sign Out</div>
+          <div className='header__sign-btn' onClick={logout}>Sign Out</div>
           <div className="user-avatar">
             <span>
               {userNameSplit[0][0].toUpperCase()}
@@ -30,7 +31,7 @@ const HeaderUserSection = () => {
             </span>
           </div>
         </>
-      ) : <div className='sign-btn' onClick={signInWithGoogle}>Sign In</div>}
+      ) : <Link className='header__sign-btn' to='/signin'>Sign In</Link>}
     </div>
   );
 };

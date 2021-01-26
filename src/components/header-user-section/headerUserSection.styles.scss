@@ -29,13 +29,16 @@
   }
 }
 
-.sign-btn {
+.header__sign-btn {
   padding: 1rem 1.5rem;
   font-size: 2rem;
   cursor: pointer;
   transition: all .3s;
+  text-decoration: none;
+  color: $light-1;
 
   &:hover {
     color: $light-2;
+    text-decoration: none;
   }
 }

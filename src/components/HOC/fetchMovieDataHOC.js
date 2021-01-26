@@ -25,13 +25,6 @@ const fetchMovieDataHOC = WrappedComponents => {
     ) : (
       <>
         <WrappedComponents items={movies} loadMore={loadMore} />
-        {/* <button className='btn__load-more'
-          onClick={() => {
-            setPageNum(pageNum + 1)
-            dispatch(fetchMoreMovies(url, pageNum));
-          }}>
-          Load more...
-        </button> */}
       </>
     );
   };
