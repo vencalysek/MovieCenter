@@ -4,6 +4,7 @@ import imageNotLoad from "../../img/img_404.jpg";
 import "./movieCard.styles.scss";
 
 const MovieCard = ({item}) => {
+  const {id, poster_path} = item
   return (
     <div className="col-md-6 col-lg-4 col-xl-2">
       <div className="flip-card">
@@ -12,8 +13,8 @@ const MovieCard = ({item}) => {
             <img
               className="card-img-top"
               src={
-                item.poster_path
-                  ? `https://image.tmdb.org/t/p/w500${item.poster_path}`
+                poster_path
+                  ? `https://image.tmdb.org/t/p/w500${poster_path}`
                   : imageNotLoad
               }
               alt=""
@@ -23,14 +24,14 @@ const MovieCard = ({item}) => {
             <img
               className="card-img-top"
               src={
-                item.poster_path
-                  ? `https://image.tmdb.org/t/p/w500${item.poster_path}`
+                poster_path
+                  ? `https://image.tmdb.org/t/p/w500${poster_path}`
                   : imageNotLoad
               }
               alt=""
             />
-            <Link to={`/movie/${item.id}`}>
-              <button className="card-btn" onClick={() => item.id}>
+            <Link to={`/movie/${id}`}>
+              <button className="card-btn" onClick={() => id}>
                 See Details
               </button>
             </Link>

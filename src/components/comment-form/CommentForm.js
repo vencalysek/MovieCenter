@@ -30,6 +30,7 @@ const CommentForm = ({commentsRef}) => {
         commentContent: comment,
         createdAt: new Date(),
         id: commentID,
+        userID: null,
         userName: 'Unregistered user',
       });
     }

@@ -5,28 +5,6 @@
   color: $light-1;
   display: flex;
   align-items: center;
-  
-  & .user-avatar {
-    width: 5.5rem;
-    height: 5.5rem;
-    background-color: $dark-1;
-    border-radius: 2.75rem;
-    overflow: hidden;
-    position: relative;
-    margin-right: 3rem;
-    
-    & span {
-      font-size: 3.2rem;
-      font-weight: bold;
-      margin: 0;
-      padding: 0;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    
-  }
 }
 
 .header__sign-btn {

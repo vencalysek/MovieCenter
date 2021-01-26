@@ -8,10 +8,10 @@ import {API_KEY, API_URL, NOW_PLAYING, POPULAR, TOP_RATED, UPCOMING} from "./Api
 // firebase
 import {useAuthState} from "react-firebase-hooks/auth";
 import {useCollectionData, useDocumentOnce} from "react-firebase-hooks/firestore";
-import {auth, firestore} from "./firebase/firebase.config";
+import {auth, firestore, createUserProfileDoc} from "./firebase/firebase.config";
 
 // redux
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {setCurrentUser} from "./redux/user/user.actions";
 
 import Home from "./pages/home/Home";
@@ -25,53 +25,25 @@ import SignInSignUpPage from "./pages/sign-in-sign-up/SignInSignUp";
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const {currentUser} = useSelector(state => state.user)
   const dispatch = useDispatch();
 
-  // logging in
-  const [user] = useAuthState(auth);
-  console.log(user)
-
-  // creating user profile in firestore
-  const userRef = user && firestore.doc(`users/${user.uid}`);
-  const [userSnap] = useDocumentOnce(userRef);
-
-  // ***************************USER COLLECTION DOCUMENTS
-  // const userRefCollection = userRef && userRef.collection('123123qwe')
-  // const userCollection = useCollectionData(userRefCollection)
-  // console.log('userCollection', userCollection)
-  // ***************************USER COLLECTION DOCUMENTS
-
-  //*** CREATING PROFILE DOC FUNCTION
-  const createUserProfileDoc = async (displayName, email, photoURL, uid) => {
-    if (!userSnap.exists) {
-      const createdAt = new Date();
-
-      try {
-        await userRef.set({
-          displayName,
-          email,
-          photoURL,
-          uid,
-          createdAt,
-        });
-      } catch (error) {
-        console.log("error creating user", error.message);
-      }
-    } else {
-      return userRef;
-    }
-
-    // userRef.onSnapshot(snapShot => console.log(snapShot))
-  };
-
   //*** LOGING IN FUNCTION
-  useEffect(() => {
-    if (userSnap) {
-      const {displayName, email, photoURL, uid} = user;
-      dispatch(setCurrentUser({displayName, email, photoURL, uid}));
-      createUserProfileDoc(displayName, email, photoURL, uid)
-    }
-  }, [userSnap]);
+  const [userAuth] = useAuthState(auth);
+  console.log('userAuth', userAuth)
+
+  useEffect(async () => {
+    if (userAuth) {
+      const userRef = await createUserProfileDoc(userAuth)
+      console.log('userRef', userRef)
+      userRef.onSnapshot(snapShot => {
+        dispatch(setCurrentUser({
+          uid: snapShot.id,
+          ...snapShot.data()
+        }))
+      })
+          }
+  }, [userAuth]);
 
 
   // *** SEARCH QUERY FUNCTION --> rebuild to redux
@@ -87,7 +59,7 @@ const App = () => {
         <div className="main-section">
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route exact path='/signin' render={() => user ? (<Redirect to='/' />) : (<SignInSignUpPage />)} />
+            <Route exact path='/signin' render={() => currentUser ? (<Redirect to='/' />) : (<SignInSignUpPage />)} />
 
             <Route
               path="/now_playing"

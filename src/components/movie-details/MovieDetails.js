@@ -99,7 +99,7 @@ const MovieDetails = () => {
               {/* poster */}
               <div className="movie-details__poster--wrap">
 
-                <BtnFavourite movieId={movieId} posterPath={movieDetails.poster_path} />
+                <BtnFavourite id={movieId} poster_path={movieDetails.poster_path} />
                 
                 <img src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`} alt="" />
               </div>

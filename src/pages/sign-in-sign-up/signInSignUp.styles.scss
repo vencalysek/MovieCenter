@@ -1,7 +1,16 @@
-.sign-in-up {
-  width: 850px;
-  display: flex;
-  justify-content: space-between;
-  margin: 4.5rem auto;
-}
+@import "../../sass/base";
 
+.sign-in-up {
+  height: 100%;
+  background-image: linear-gradient($dark-1 5rem, rgba(black, 0.8)),
+    url("../../assets/background-hero.jpg");
+
+  &__wrapper {
+    width: 850px;
+    display: flex;
+    justify-content: space-between;
+    margin: 4.5rem auto;
+  }
+  
+  
+}

@@ -6,8 +6,11 @@ import './signInSignUp.styles.scss'
 const SignInSignUp = () => {
   return (
     <div className='sign-in-up'>
+      <div className="sign-in-up__wrapper">
+
       <SignIn />
       <SignUp />
+      </div>
     </div>
   )
 }

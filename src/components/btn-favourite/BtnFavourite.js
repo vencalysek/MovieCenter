@@ -4,12 +4,12 @@ import {firestore} from "../../firebase/firebase.config";
 import {useDocumentOnce} from "react-firebase-hooks/firestore";
 import "./btnFavourite.styles.scss";
 
-const BtnFavourite = ({movieId, posterPath}) => {
+const BtnFavourite = ({id, poster_path}) => {
   const [favourite, setFavourite] = useState(false);
   const {currentUser} = useSelector(state => state.user);
 
   const favouriteMoviesRef =
-    currentUser && firestore.doc(`users/${currentUser.uid}/favouriteMovies/${movieId}`);
+    currentUser && firestore.doc(`users/${currentUser.uid}/favouriteMovies/${id}`);
 
   const [favouriteSnap] = useDocumentOnce(favouriteMoviesRef);
 
@@ -19,8 +19,8 @@ const BtnFavourite = ({movieId, posterPath}) => {
     if (!favouriteSnap.exists) {
       setFavourite(!favouriteSnap.exists);
       await favouriteMoviesRef.set({
-        movieId,
-        posterPath,
+        id,
+        poster_path,
       });
     } else {
       console.log("deleted");

@@ -16,7 +16,9 @@ const SignIn = () => {
       await auth.signInWithEmailAndPassword(email, password);
 
       // if succeeds reset state and form
-      this.setState({email: "", password: ""});
+      setEmail('')
+      setPassword('')
+
     } catch (error) {
       alert(`${error.message}`);
     }
@@ -49,7 +51,7 @@ const SignIn = () => {
 
         <div className="button__container">
           <button className="button" type='submit'>Sign In</button>
-          <button className="button" type='button'>
+          <button className="button" type='button' onClick={signInWithGoogle}>
             Sign In With Google
           </button>
         </div>

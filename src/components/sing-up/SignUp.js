@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-import {auth} from "../../firebase/firebase.config";
+import {auth, createUserProfileDoc} from "../../firebase/firebase.config";
 
 import FormInput from "../form-input/FormInput";
 import "./signUp.styles.scss";
@@ -14,11 +14,25 @@ const SignUp = () => {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    try {
-      await auth.signInWithEmailAndPassword(email, password);
+    if (password !== confirmPassword) {
+      alert("Passwords don't match");
+      return;
+    }
 
-      // if succeeds reset state and form
-      this.setState({email: "", password: ""});
+    try {
+      let {user} = await auth.createUserWithEmailAndPassword(email, password);
+
+      await user.updateProfile({
+        displayName,
+      })
+
+      await createUserProfileDoc(user);
+      setDisplayName('')
+      setEmail('')
+      setPassword('')
+      setConfirmPassword('')
+
+
     } catch (error) {
       alert(`${error.message}`);
     }

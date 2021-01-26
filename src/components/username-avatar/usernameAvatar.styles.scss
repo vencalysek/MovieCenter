@@ -1,0 +1,25 @@
+@import "../../sass/base";
+.user-avatar {
+  width: 5.5rem;
+  height: 5.5rem;
+  background-color: rgba($color: $dark-1, $alpha: .75);
+  border-radius: 2.75rem;
+  overflow: hidden;
+  position: relative;
+  margin-right: 3rem;
+
+  &.blue-background {
+    background-color: rgba($color: $primary-light, $alpha: .5);
+  }
+
+  & span {
+    font-size: 3.2rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
