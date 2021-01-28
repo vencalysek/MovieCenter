@@ -24,6 +24,15 @@ const Home = () => {
           <div className="no-user">
             <h1>Welcome to MovieCenter</h1>
             <h2>Explore this website to find a desired movies</h2>
+            <br />
+            <br />
+            <p>
+              You can Sign In and get accest to more functions provided by this application
+              <ul>
+                <li>mark favourite movie</li>
+                <li>delete comment</li>
+              </ul>
+            </p>
           </div>
         )}
       </div>
