@@ -21,8 +21,6 @@ const fetchMoreMoviesSuccess = movies => {
   };
 };
 
-
-
 const fetchMoviesFailure = error => {
   return {
     type: MoviesActionTypes.FETCH_MOVIES_FAILURE,

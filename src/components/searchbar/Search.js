@@ -4,7 +4,7 @@ import {Redirect} from "react-router-dom";
 
 import "./search.styles.scss";
 
-const Search = ({getQuery}) => {
+const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchQueryFinal, setSearchQueryFinal] = useState("");
   const [redirect, setRedirect] = useState(false);
@@ -22,7 +22,7 @@ const Search = ({getQuery}) => {
   };
 
   useEffect(() => {
-    getQuery(searchQueryFinal);
+    setSearchQueryFinal(searchQueryFinal);
     // vymaze input
     setSearchQuery("");
   }, [searchQueryFinal]);

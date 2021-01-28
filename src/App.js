@@ -24,7 +24,6 @@ import MoviesSearched from "./pages/movies-searched/MoviesSearched";
 import SignInSignUpPage from "./pages/sign-in-sign-up/SignInSignUp";
 
 const App = () => {
-  const [searchQuery, setSearchQuery] = useState("");
   const {currentUser} = useSelector(state => state.user)
   const dispatch = useDispatch();
 
@@ -45,15 +44,9 @@ const App = () => {
           }
   }, [userAuth]);
 
-
-  // *** SEARCH QUERY FUNCTION --> rebuild to redux
-  const getQuery = query => {
-    setSearchQuery(query);
-  };
-
   return (
     <div className="app">
-      <Header getQuery={getQuery} />
+      <Header />
       <div className="content">
         <Sidebar />
         <div className="main-section">
