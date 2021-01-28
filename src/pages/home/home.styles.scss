@@ -18,9 +18,18 @@
     margin-top: -7rem;
     margin-left: 4.5rem;
   }
+
+  & .no-user {
+    text-align: center;
+
+    & li {
+      font-weight: 300;
+    }
+  }
   & h1,
   & h2 {
     margin: 1rem 0 0 2rem;
+    font-weight: 300;
   }
   & h1 {
     font-weight: 700;

@@ -8,17 +8,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
 
   & .warning {
     font-weight: 300;
-    color: $primary-light;
+    color: $light-1;
+    margin: 0;
+
+    &__wrap {
+      text-align: center;
+    }
   }
 
   &__wrapper {
     width: 850px;
     display: flex;
     justify-content: space-between;
-    margin: 2rem auto;
   }
   
   

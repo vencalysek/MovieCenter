@@ -10,13 +10,15 @@ const SignInSignUp = () => {
         <SignIn />
         <SignUp />
       </div>
-      <span className="warning mt-5">
-        Sign In and Sign Up functions are provided by Google firebase application.
-      </span>
-      <span className="warning">
-        Please do not violate any rules nor try to abuse functions of this application.
-      </span>
-      <span className="warning">*You can use fake email for registration.</span>
+      <div className='warning__wrap'>
+        <p className="warning mt-5">
+          Sign In and Sign Up functions are provided by Google firebase application.
+        </p>
+        <p className="warning">
+          Please do not violate any rules nor try to abuse functions of this application.
+        </p>
+        <p className="warning">*you can use fake email for registration.</p>
+      </div>
     </div>
   );
 };
