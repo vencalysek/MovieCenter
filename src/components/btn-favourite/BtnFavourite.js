@@ -23,7 +23,6 @@ const BtnFavourite = ({id, poster_path}) => {
         poster_path,
       });
     } else {
-      console.log("deleted");
       favouriteMoviesRef.delete();
       setFavourite(false);
     }

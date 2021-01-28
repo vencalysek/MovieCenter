@@ -3,7 +3,6 @@ import CastCard from "../cast-card/CastCard";
 import "./scrollCollection.styless.scss";
 
 const ScrollCollection = ({items, collectionTitle}) => {
-  console.log(items);
   return (
     <div className="item-collection__container">
       <h2 className='item-collection__title'>{collectionTitle}</h2>

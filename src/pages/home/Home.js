@@ -8,14 +8,12 @@ import "./home.styles.scss";
 
 const Home = () => {
   const {currentUser} = useSelector(state => state.user);
-  // console.log(currentUser && currentUser.uid)
 
   const favouriteMoviesRef =
     currentUser &&
     firestore.collection("users").doc(currentUser.uid).collection("favouriteMovies");
 
   const [favouriteMovies] = useCollectionData(favouriteMoviesRef);
-  console.log(favouriteMovies);
 
   return (
     <div className="movie-section home">

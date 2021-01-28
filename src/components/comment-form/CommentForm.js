@@ -10,7 +10,6 @@ const CommentForm = ({commentsRef}) => {
 
   const randomID = () => {
     setCommentID(`${Math.random()}`)
-    console.log()
   }
 
   const handleSubmit = async e => {

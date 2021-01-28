@@ -38,7 +38,6 @@ export const fetchMovies = url => {
       .get(url)
       .then(response => {
         const movies = response.data.results;
-        console.log(response)
         dispatch(fetchMoviesSuccess(movies));
       })
 
@@ -60,7 +59,6 @@ export const fetchMoreMovies = (url, pageNum) => {
       .get(`${url}&page=${pageNum}`)
       .then(response => {
         const movies = response.data.results;
-        console.log(response)
         dispatch(fetchMoreMoviesSuccess(movies));
       })
 
