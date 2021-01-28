@@ -1,21 +1,21 @@
 @import '../../sass/base';
 
 @mixin shrinkLabel {
-  top: -14px;
+  top: -1.7rem;
   font-size: 12px;
   color: $light-2;
 }
 
 .group {
   position: relative;
-  margin: 45px 0;
+  margin: 3rem 0;
 
   .form-input {
     background: none;
     background-color: transparent;
     color: $light-2;
     font-size: 1.8rem;
-    padding: 10px 10px 10px 5px;
+    padding: 7px 5px 7px 5px;
     display: block;
     width: 100%;
     border: none;

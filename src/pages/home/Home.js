@@ -19,7 +19,7 @@ const Home = () => {
     <div className="movie-section home">
       <div className="home__wrap">
         {currentUser ? (
-          <div className="logged-user">Hello {currentUser.displayName}</div>
+          <div className="logged-user">Welcome {currentUser.displayName.split(' ')[0]}</div>
         ) : (
           <div className="no-user">
             <h1>Welcome to MovieCenter</h1>
@@ -39,7 +39,7 @@ const Home = () => {
 
       {favouriteMovies && favouriteMovies.length ? (
         <div className="container-fliud m-5">
-          <p className="m-4">Your favourite movies...</p>
+          <p className="m-4">YOUR FAVOURITE MOVIES</p>
           <div className="row">
             {favouriteMovies.map(item => (
               <MovieCard key={item.id} item={item} />

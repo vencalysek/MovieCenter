@@ -9,15 +9,16 @@
   flex-direction: column;
   align-items: center;
 
-  & p {
+  & .warning {
     font-weight: 300;
+    color: $primary-light;
   }
 
   &__wrapper {
     width: 850px;
     display: flex;
     justify-content: space-between;
-    margin: 4.5rem auto;
+    margin: 2rem auto;
   }
   
   
