@@ -28,11 +28,11 @@ const Home = () => {
             <br />
             <p>
               You can Sign In and get accest to more functions provided by this application
+            </p>
               <ul>
                 <li>mark favourite movie</li>
                 <li>delete comment</li>
               </ul>
-            </p>
           </div>
         )}
       </div>
