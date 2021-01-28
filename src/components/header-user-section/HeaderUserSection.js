@@ -1,5 +1,5 @@
 import React from "react";
-import {auth, signInWithGoogle} from "../../firebase/firebase.config";
+import {auth} from "../../firebase/firebase.config";
 import "./headerUserSection.styles.scss";
 
 import {useSelector, useDispatch} from "react-redux";
@@ -15,8 +15,6 @@ const HeaderUserSection = () => {
     auth.signOut();
     dispatch(setCurrentUser(null));
   };
-
-  const userNameSplit = currentUser && currentUser.displayName.split(" ");
 
   return (
     <div className="header-user-section">

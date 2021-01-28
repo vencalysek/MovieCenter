@@ -5,7 +5,7 @@ import "./header.styles.scss";
 import HeaderUserSection from "../header-user-section/HeaderUserSection";
 import { Link } from "react-router-dom";
 
-const Header = ({getQuery}) => {
+const Header = () => {
   return (
     <header className="header">
       <div className="header__logo-wrapper">
@@ -13,7 +13,7 @@ const Header = ({getQuery}) => {
           <Link to="/">MovieCenter</Link>
         </p>
       </div>
-      <Search getQuery={getQuery} />
+      <Search />
 
       <HeaderUserSection />
     </header>

@@ -23,7 +23,7 @@ const MovieDetails = () => {
   const [isLoading, setIsLoading] = useState(true);
   const {movieId} = useParams();
   const history = useHistory();
-  const {loading, movieDetails, error} = useSelector(state => state.movieDetails);
+  const {movieDetails} = useSelector(state => state.movieDetails);
   const {casts} = useSelector(state => state.casts);
 
   const dispatch = useDispatch();

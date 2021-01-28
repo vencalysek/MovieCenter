@@ -8,14 +8,12 @@ import "./home.styles.scss";
 
 const Home = () => {
   const {currentUser} = useSelector(state => state.user);
-  // console.log(currentUser && currentUser.uid)
 
   const favouriteMoviesRef =
     currentUser &&
     firestore.collection("users").doc(currentUser.uid).collection("favouriteMovies");
 
   const [favouriteMovies] = useCollectionData(favouriteMoviesRef);
-  console.log(favouriteMovies);
 
   return (
     <div className="movie-section home">
@@ -26,6 +24,15 @@ const Home = () => {
           <div className="no-user">
             <h1>Welcome to MovieCenter</h1>
             <h2>Explore this website to find a desired movies</h2>
+            <br />
+            <br />
+            <p>
+              You can Sign In and get accest to more functions provided by this application
+              <ul>
+                <li>mark favourite movie</li>
+                <li>delete comment</li>
+              </ul>
+            </p>
           </div>
         )}
       </div>

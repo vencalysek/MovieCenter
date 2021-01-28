@@ -1,14 +1,13 @@
 import "./sass/App.scss";
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import Header from "./components/header/Header";
 import Sidebar from "./components/side-bar/Sidebar";
 import {Switch, Route, Redirect} from "react-router-dom";
-import {API_KEY, API_URL, NOW_PLAYING, POPULAR, TOP_RATED, UPCOMING} from "./ApiConfig";
+import {NOW_PLAYING, POPULAR, TOP_RATED, UPCOMING} from "./ApiConfig";
 
 // firebase
 import {useAuthState} from "react-firebase-hooks/auth";
-import {useCollectionData, useDocumentOnce} from "react-firebase-hooks/firestore";
-import {auth, firestore, createUserProfileDoc} from "./firebase/firebase.config";
+import {auth, createUserProfileDoc} from "./firebase/firebase.config";
 
 // redux
 import {useDispatch, useSelector} from "react-redux";
@@ -24,42 +23,41 @@ import MoviesSearched from "./pages/movies-searched/MoviesSearched";
 import SignInSignUpPage from "./pages/sign-in-sign-up/SignInSignUp";
 
 const App = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const {currentUser} = useSelector(state => state.user)
+  const {currentUser} = useSelector(state => state.user);
   const dispatch = useDispatch();
 
   //*** LOGING IN FUNCTION
   const [userAuth] = useAuthState(auth);
-  console.log('userAuth', userAuth)
 
-  useEffect(async () => {
-    if (userAuth) {
-      const userRef = await createUserProfileDoc(userAuth)
-      console.log('userRef', userRef)
-      userRef.onSnapshot(snapShot => {
-        dispatch(setCurrentUser({
-          uid: snapShot.id,
-          ...snapShot.data()
-        }))
-      })
-          }
+  useEffect(() => 
+    async () => {
+      if (userAuth) {
+        const userRef = await createUserProfileDoc(userAuth);
+        userRef.onSnapshot(snapShot => {
+          dispatch(
+            setCurrentUser({
+              uid: snapShot.id,
+              ...snapShot.data(),
+            })
+          );
+        });
+      }
+    
   }, [userAuth]);
-
-
-  // *** SEARCH QUERY FUNCTION --> rebuild to redux
-  const getQuery = query => {
-    setSearchQuery(query);
-  };
 
   return (
     <div className="app">
-      <Header getQuery={getQuery} />
+      <Header />
       <div className="content">
         <Sidebar />
         <div className="main-section">
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route exact path='/signin' render={() => currentUser ? (<Redirect to='/' />) : (<SignInSignUpPage />)} />
+            <Route
+              exact
+              path="/signin"
+              render={() => (currentUser ? <Redirect to="/" /> : <SignInSignUpPage />)}
+            />
 
             <Route
               path="/now_playing"

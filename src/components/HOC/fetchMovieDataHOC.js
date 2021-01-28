@@ -8,7 +8,7 @@ import {fetchMovies, fetchMoreMovies} from "../../redux/movies/movies.actions";
 const fetchMovieDataHOC = WrappedComponents => {
   const WithData = ({url}) => {
     const [pageNum, setPageNum] = useState(2);
-    const {loading, movies, error} = useSelector(state => state.movies);
+    const {loading, movies} = useSelector(state => state.movies);
     const dispatch = useDispatch();
 
     useEffect(() => {

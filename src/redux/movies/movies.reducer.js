@@ -3,7 +3,7 @@ import {MoviesActionTypes} from './movies.types'
 const initState = {
   loading: false,
   movies: [],
-  error: ''
+  error: '',
 }
 
 const fetchMoviesReducer = (state = initState, action) => {

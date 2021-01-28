@@ -10,7 +10,7 @@ import {fetchMovies} from "../../redux/movies/movies.actions";
 const MoviesSearched = () => {
 
   const {searchQuery} = useParams();
-  const {loading, movies, error} = useSelector(state => state.movies);
+  const {movies} = useSelector(state => state.movies);
   const dispatch = useDispatch();
 
   const url=`${API_URL}/search/movie?api_key=${API_KEY}&query=${searchQuery}`
