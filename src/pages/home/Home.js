@@ -19,7 +19,7 @@ const Home = () => {
     <div className="movie-section home">
       <div className="home__wrap">
         {currentUser ? (
-          <div className="logged-user">Welcome {currentUser.displayName.split(' ')[0]}</div>
+          <div className="logged-user">Welcome {currentUser.displayName && currentUser.displayName.split(' ')[0]}</div>
         ) : (
           <div className="no-user">
             <h1>Welcome to MovieCenter</h1>
